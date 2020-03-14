@@ -7,7 +7,7 @@ app.engine(
 	'hbs',
 	expressHbs({
 		layoutsDir: 'views/layouts/',
-		defaultLayout: 'landingPage',
+		defaultLayout: 'baseLayout',
 		extname: 'hbs'
 	})
 )
@@ -28,12 +28,13 @@ app.use('/', dashboardRoutes)
 app.use(express.static(path.join(__dirname, '/public')))
 
 // Remember to Change res.send to res.render when using Handlebars
-app.get('/', (req, res) => {
-	res.render('layouts/landingPage', {})
-})
 
 app.get('/signup', (req, res) => {
-	res.send('Signup Page Rendered')
+	res.render('signupPage', { pageTitle: 'signupPage' })
+})
+
+app.get('/', (req, res) => {
+	res.render('landingPage', {})
 })
 
 app.listen(process.env.PORT || 3000)
