@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const pageRenderController = require('../controllers/pageRenderController')
+const dashboardController = require('../controllers/dashboardController')
 
-router.route('/dashboard').get(pageRenderController.renderDashboard)
+router.route('/dashboard').get(dashboardController.renderDashboard)
 
 module.exports = router

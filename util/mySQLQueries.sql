@@ -8,9 +8,16 @@ CREATE TABLE users (
   bio VARCHAR (99) NOT NULL,
   img_url VARCHAR (2083) NOT NULL,
   country VARCHAR(99) NOT NULL,
-  date_of_birth DATE NOT NULL,
-  post_count INT NOT NULL,
-  message_count INT NOT NULL,
-  like_count INT NOT NULL
+  date_of_birth DATETIME NOT NULL,
+  post_count INT DEFAULT 0 NOT NULL,
+  message_count INT DEFAULT 0 NOT NULL,
+  like_count INT DEFAULT 0 NOT NULL
 );
+
+
+-- OTHER --
+
+-- Creates a new user --
+INSERT INTO users (email, password, full_name, bio, img_url, country, date_of_birth)
+  VALUES('testemail', 'testpassword', 'testfull_name', 'testbio', 'testimgurul', 'testcountry', '2020-01-01');
 
