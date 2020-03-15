@@ -1,7 +1,6 @@
 const pool = require('../util/database')
 
 exports.createUser = (userData) => {
-	console.log(userData.userId)
 	const sql =
 		'INSERT INTO users (email, password, full_name, bio, img_url, country, date_of_birth) VALUES("' +
 		userData.email +

@@ -1,25 +1,19 @@
 const processRegistration = async () => {
-	const firstData = await getStashedUserSignupData()
-	console.log(firstData)
-	const secondData = gatherSecondUserData()
-	console.log(secondData)
-	// if (!validateUserData(userData)) {
-	//   return
-	// }
-	//window.location.replace('/signup')
+	const userData = gatherUserData()
+	if (!checkAllFieldsFilled(userData)) {
+		return
+	}
+	try {
+		const response = await createUser(userData)
+		console.log(response)
+		window.location.replace('/dashboard')
+	} catch (err) {
+		console.log(err)
+		return
+	}
 }
 
-const getStashedUserSignupData = async (userData) => {
-	await fetch('/getStashedUserSignupData')
-		.then((response) => {
-			const data = response.json()
-			console.log(data)
-			return data
-		})
-		.catch((err) => console.log(err))
-}
-
-const gatherSecondUserData = () => {
+const gatherUserData = () => {
 	const userData = {
 		img_url: '',
 		bio: '',
@@ -33,4 +27,31 @@ const gatherSecondUserData = () => {
 	userData['date_of_birth'] = document.querySelector('.inp_dateOfBirth').value
 
 	return userData
+}
+
+const checkAllFieldsFilled = (userData) => {
+	const values = Object.values(userData)
+	for (value of values) {
+		if (value === '' || value === ' ') {
+			console.log('All fields must be filled')
+			return false
+		}
+	}
+	return true
+}
+
+const createUser = async (userData) => {
+	try {
+		const response = await fetch('/createUser', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(userData)
+		})
+		const data = await response.text()
+		return data
+	} catch (err) {
+		return err
+	}
 }

@@ -1,10 +1,14 @@
-const processRegistration = () => {
+const processRegistration = async () => {
 	const userData = gatherUserData()
 	if (!validateUserData(userData)) {
 		return
 	}
-	stashUserSignupData(userData)
-	window.location.replace('/signup')
+	try {
+		await stashUserSignupData(userData)
+		window.location.replace('/signup')
+	} catch (err) {
+		console.log(err)
+	}
 }
 
 const gatherUserData = () => {
@@ -26,15 +30,7 @@ const gatherUserData = () => {
 }
 
 const validateUserData = (userData) => {
-	const values = Object.values(userData)
-	for (value of values) {
-		if (value === '' || value === ' ') {
-			console.log('All fields must be filled')
-			return false
-		}
-	}
-	if (userData.password !== userData.confirm_password) {
-		console.log('Password fields must match')
+	if (!checkAllFieldsFilled(userData) || !checkPasswordFieldsMatch(userData)) {
 		return false
 	}
 	userData['full_name'] = userData.first_name + ' ' + userData.last_name
@@ -45,14 +41,37 @@ const validateUserData = (userData) => {
 	return true
 }
 
-const stashUserSignupData = (userData) => {
-	fetch('/stashUserSignupData', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(userData)
-	})
-		.then(console.log('Data stashed'))
-		.catch((err) => console.log(err))
+const checkAllFieldsFilled = (userData) => {
+	const values = Object.values(userData)
+	for (value of values) {
+		if (value === '' || value === ' ') {
+			console.log('All fields must be filled')
+			return false
+		}
+	}
+	return true
+}
+
+const checkPasswordFieldsMatch = (userData) => {
+	if (userData.password !== userData.confirm_password) {
+		console.log('Password fields must match')
+		return false
+	}
+	return true
+}
+
+const stashUserSignupData = async (userData) => {
+	try {
+		const response = await fetch('/stashUserSignupData', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(userData)
+		})
+		const data = await response.text()
+		console.log(data)
+	} catch (err) {
+		return err
+	}
 }

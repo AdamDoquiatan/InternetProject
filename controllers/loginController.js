@@ -10,20 +10,40 @@ let stashedUserSignupData = {}
 
 exports.stashUserSignupData = (req, res) => {
 	stashedUserSignupData = req.body
-	console.log(stashedUserSignupData)
+	res.send('Data stashed')
 }
 
-exports.getStashedUserSignupData = (req, res) => {
-	console.log(stashedUserSignupData)
-	res.send(stashedUserSignupData)
+exports.createUser = async (req, res) => {
+	const userData = req.body
+	const fullUserData = joinUserAttributes(getStashedUserSignupData(), userData)
+	console.log(fullUserData)
+
+	try {
+		const response = await saveUserToDB(fullUserData)
+		res.send(response)
+	} catch (err) {
+		res.send(err)
+	}
 }
 
-exports.createUser = (req, res) => {
-	let userData = req.body
-	loginModel.createUser(userData).then(res.send('new user added')).catch((err) => res.send(err))
+const joinUserAttributes = (userData, stashedUserSignupData) => {
+	return { ...stashedUserSignupData, ...userData }
 }
 
-exports.validateCredentials = (req, res) => {
+const saveUserToDB = async (fullUserData) => {
+	try {
+		await loginModel.createUser(fullUserData)
+		return 'new user added'
+	} catch (err) {
+		throw err
+	}
+}
+
+const getStashedUserSignupData = () => {
+	return stashedUserSignupData
+}
+
+exports.validateLoginCredentials = (req, res) => {
 	// loginModel
 	// 	.getCredentials()
 	// 	.then(([ data, metadata ]) => {
@@ -41,4 +61,15 @@ exports.validateCredentials = (req, res) => {
 	// 		}
 	// 	})
 	// 	.catch((err) => console.log(err))
+}
+
+// For Testing w/ postman
+exports.postmanSaveUserToDB = async (req, res) => {
+	try {
+		let userData = req.body
+		await loginModel.createUser(userData)
+		res.send('new user added')
+	} catch (err) {
+		res.send(err)
+	}
 }
