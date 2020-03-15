@@ -1,9 +1,9 @@
 const processRegistration = () => {
 	const userData = gatherUserData()
-	console.log(userData)
 	if (!validateUserData(userData)) {
 		return
 	}
+	stashUserSignupData(userData)
 	window.location.replace('/signup')
 }
 
@@ -28,7 +28,6 @@ const gatherUserData = () => {
 const validateUserData = (userData) => {
 	const values = Object.values(userData)
 	for (value of values) {
-		console.log('value: ' + value)
 		if (value === '' || value === ' ') {
 			console.log('All fields must be filled')
 			return false
@@ -42,6 +41,18 @@ const validateUserData = (userData) => {
 	delete userData.first_name
 	delete userData.last_name
 	delete userData.confirm_password
-	console.log(userData)
+
 	return true
+}
+
+const stashUserSignupData = (userData) => {
+	fetch('/stashUserSignupData', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(userData)
+	})
+		.then(console.log('Data stashed'))
+		.catch((err) => console.log(err))
 }

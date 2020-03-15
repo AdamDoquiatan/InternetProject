@@ -5,7 +5,19 @@
   <title>
     Internet App
   </title>
-  <script type="text/javascript" src="/js/landingPage.js" defer></script>
+    {{#if landingPageJSCSS }}
+    <script type="text/javascript" src="/js/landingPage.js" defer></script>
+    <link href='/css/landingPage.css' rel='stylesheet' />
+    {{/if}}
+    {{#if signupPageJSCSS }}
+    <script type="text/javascript" src="/js/signupPage.js" defer></script>
+    <link href='/css/signupPage.css' rel='stylesheet' />
+    {{/if}}
+    {{#if signupPageJSCSS }}
+    <script type="text/javascript" src="/js/dashboard.js" defer></script>
+    <link href='/css/dashboard.css' rel='stylesheet' />
+    {{/if}}
+  
 </head>
 
 <body>

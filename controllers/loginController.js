@@ -6,6 +6,18 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+let stashedUserSignupData = {}
+
+exports.stashUserSignupData = (req, res) => {
+	stashedUserSignupData = req.body
+	console.log(stashedUserSignupData)
+}
+
+exports.getStashedUserSignupData = (req, res) => {
+	console.log(stashedUserSignupData)
+	res.send(stashedUserSignupData)
+}
+
 exports.createUser = (req, res) => {
 	let userData = req.body
 	loginModel.createUser(userData).then(res.send('new user added')).catch((err) => res.send(err))
