@@ -1,3 +1,4 @@
+/////// SIGNUP ///////
 const processRegistration = async () => {
 	const userData = gatherUserData()
 	if (!validateUserData(userData)) {
@@ -73,5 +74,45 @@ const stashUserSignupData = async (userData) => {
 		console.log(data)
 	} catch (err) {
 		return err
+	}
+}
+
+/////// LOGIN ///////
+const login = async () => {
+	const email = document.querySelector('.inp_email').value
+	const password = document.querySelector('.inp_login_password').value
+
+	try {
+		const response = await validateLoginCredentials(email, password)
+		const userId = response['user_id']
+		if (userId === undefined) {
+			console.log('invalid login credentials')
+			return
+		} else {
+			//window.location.replace('/dashboard')
+			console.log('going to dashboard with userId: ' + userId)
+		}
+	} catch (err) {
+		console.log(err)
+		return
+	}
+}
+
+const validateLoginCredentials = async (email, password) => {
+	try {
+		const response = await fetch('/validateLoginCredentials', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				email: email,
+				password: password
+			})
+		})
+		const data = await response.json()
+		return data
+	} catch (err) {
+		throw err
 	}
 }

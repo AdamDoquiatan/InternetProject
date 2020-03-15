@@ -15,9 +15,13 @@ CREATE TABLE users (
 );
 
 
+
+
 -- OTHER --
 
 -- Creates a new user --
 INSERT INTO users (email, password, full_name, bio, img_url, country, date_of_birth)
   VALUES('testemail', 'testpassword', 'testfull_name', 'testbio', 'testimgurul', 'testcountry', '2020-01-01');
 
+-- Gets a user id based on email and password (for login validation) --
+SELECT user_id FROM users WHERE email = 'adamdoq@gmail.com' && password = 'password';

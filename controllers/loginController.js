@@ -1,11 +1,12 @@
 const express = require('express')
 const app = express()
-const loginModel = require('../models/userModel')
+const userModel = require('../models/userModel')
 const bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+/////// SIGNUP ///////
 let stashedUserSignupData = {}
 
 exports.stashUserSignupData = (req, res) => {
@@ -32,7 +33,7 @@ const joinUserAttributes = (userData, stashedUserSignupData) => {
 
 const saveUserToDB = async (fullUserData) => {
 	try {
-		await loginModel.createUser(fullUserData)
+		await userModel.createUser(fullUserData)
 		return 'new user added'
 	} catch (err) {
 		throw err
@@ -43,31 +44,22 @@ const getStashedUserSignupData = () => {
 	return stashedUserSignupData
 }
 
-exports.validateLoginCredentials = (req, res) => {
-	// loginModel
-	// 	.getCredentials()
-	// 	.then(([ data, metadata ]) => {
-	// 		console.log(data[0]['user_name'] + ' ' + data[0]['password'])
-	// 		const validUsername = data[0]['user_name']
-	// 		const validPassword = data[0]['password']
-	// 		const username = req.body.enteredUsername
-	// 		const password = req.body.enteredPassword
-	// 		console.log(username === validUsername)
-	// 		console.log(password === validPassword)
-	// 		if (username === validUsername && password === validPassword) {
-	// 			res.send({ redirect: '/dashboard' })
-	// 		} else {
-	// 			console.log('Wrong credentials -- sorry!')
-	// 		}
-	// 	})
-	// 	.catch((err) => console.log(err))
+/////// LOGIN ///////
+exports.validateLoginCredentials = async (req, res) => {
+	try {
+		const userId = await userModel.getUserId(req.body)
+		console.log('user id: ' + userId)
+		res.send({ user_id: userId })
+	} catch (err) {
+		throw err
+	}
 }
 
-// For Testing w/ postman
+/////// For Testing Endpoints w/ postman ///////
 exports.postmanSaveUserToDB = async (req, res) => {
 	try {
 		let userData = req.body
-		await loginModel.createUser(userData)
+		await userModel.createUser(userData)
 		res.send('new user added')
 	} catch (err) {
 		res.send(err)

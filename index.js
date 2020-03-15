@@ -27,14 +27,12 @@ app.use('/', dashboardRoutes)
 // Points towards location of js and css folders
 app.use(express.static(path.join(__dirname, '/public')))
 
-// Remember to Change res.send to res.render when using Handlebars
+app.get('/', (req, res) => {
+	res.render('landingPage', { landingPageJSCSS: true })
+})
 
 app.get('/signup', (req, res) => {
 	res.render('signupPage', { signupPageJSCSS: true })
-})
-
-app.get('/', (req, res) => {
-	res.render('landingPage', { landingPageJSCSS: true })
 })
 
 app.listen(process.env.PORT || 3000)
