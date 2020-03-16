@@ -1,6 +1,7 @@
 /////// SIGNUP ///////
 const processRegistration = async () => {
 	const userData = gatherUserData()
+	console.log('userdata: ' + JSON.stringify(userData))
 	if (!validateUserData(userData)) {
 		return
 	}
@@ -16,14 +17,14 @@ const gatherUserData = () => {
 	const userData = {
 		first_name: '',
 		last_name: '',
-		email: '',
+		email: 'this is the default',
 		password: '',
 		confirm_password: ''
 	}
 
 	userData['first_name'] = document.querySelector('.inp_firstName').value
 	userData['last_name'] = document.querySelector('.inp_lastName').value
-	userData['email'] = document.querySelector('.inp_email').value
+	userData['email'] = document.querySelector('.inp_email_').value
 	userData['password'] = document.querySelector('.inp_signupPassword').value
 	userData['confirm_password'] = document.querySelector('.inp_confirmPassword').value
 
@@ -71,7 +72,6 @@ const stashUserSignupData = async (userData) => {
 			body: JSON.stringify(userData)
 		})
 		const data = await response.text()
-		console.log(data)
 	} catch (err) {
 		return err
 	}
@@ -89,8 +89,8 @@ const login = async () => {
 			console.log('invalid login credentials')
 			return
 		} else {
-			//window.location.replace('/dashboard')
 			console.log('going to dashboard with userId: ' + userId)
+			window.location.replace('/' + userId + '/dashboard/')
 		}
 	} catch (err) {
 		console.log(err)

@@ -20,10 +20,11 @@ exports.createUser = async (req, res) => {
 	console.log(fullUserData)
 
 	try {
-		const response = await saveUserToDB(fullUserData)
-		res.send(response)
+		const userId = await saveUserToDB(fullUserData)
+		console.log('here99: ' + userId)
+		res.send({ user_id: userId })
 	} catch (err) {
-		res.send(err)
+		res.status(500).send({ error: err })
 	}
 }
 
@@ -33,8 +34,8 @@ const joinUserAttributes = (userData, stashedUserSignupData) => {
 
 const saveUserToDB = async (fullUserData) => {
 	try {
-		await userModel.createUser(fullUserData)
-		return 'new user added'
+		const userId = await userModel.createUser(fullUserData)
+		return userId
 	} catch (err) {
 		throw err
 	}
@@ -51,7 +52,7 @@ exports.validateLoginCredentials = async (req, res) => {
 		console.log('user id: ' + userId)
 		res.send({ user_id: userId })
 	} catch (err) {
-		throw err
+		res.send(err)
 	}
 }
 

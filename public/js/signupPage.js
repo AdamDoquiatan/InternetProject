@@ -4,11 +4,11 @@ const processRegistration = async () => {
 		return
 	}
 	try {
-		const response = await createUser(userData)
-		console.log(response)
-		window.location.replace('/dashboard')
+		const userId = await createUser(userData)
+		console.log('going to dashboard with userId: ' + userId)
+		window.location.replace('/' + userId + '/dashboard/')
 	} catch (err) {
-		console.log(err)
+		console.log('Error: Please Ensure your date of birth is in format YYYY-MM-DD')
 		return
 	}
 }
@@ -49,9 +49,14 @@ const createUser = async (userData) => {
 			},
 			body: JSON.stringify(userData)
 		})
-		const data = await response.text()
-		return data
+		const data = await response.json()
+		if ('error' in data) {
+			throw data['error']
+		} else {
+			const userId = data['user_id']
+			return userId
+		}
 	} catch (err) {
-		return err
+		throw err
 	}
 }
