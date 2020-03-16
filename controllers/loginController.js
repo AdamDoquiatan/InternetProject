@@ -21,7 +21,6 @@ exports.createUser = async (req, res) => {
 
 	try {
 		const userId = await saveUserToDB(fullUserData)
-		console.log('here99: ' + userId)
 		res.send({ user_id: userId })
 	} catch (err) {
 		res.status(500).send({ error: err })

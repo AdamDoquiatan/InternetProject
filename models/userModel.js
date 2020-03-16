@@ -19,7 +19,7 @@ exports.createUser = async (userData) => {
 			'","' +
 			userData.date_of_birth +
 			'");'
-		const response = await pool.execute(sql)
+		await pool.execute(sql)
 
 		//returns the new user's userId
 		const userId = await this.getUserId({ email: userData.email, password: userData.password })
@@ -43,6 +43,25 @@ exports.getUserId = async (userData) => {
 		} else {
 			const userId = response[0][0]['user_id']
 			return userId
+		}
+	} catch (err) {
+		throw err
+	}
+}
+
+exports.getUserProfile = async (userData) => {
+	try {
+		console.log(userData)
+		const response = await pool.execute(
+			'SELECT full_name, bio, img_url, country, date_of_birth, post_count, message_count, like_count FROM users WHERE user_id = "' +
+				userData.user_id +
+				'";'
+		)
+		if (response[0].length === 0) {
+			throw new Error('User id not found')
+		} else {
+			const responseData = response[0][0]
+			return responseData
 		}
 	} catch (err) {
 		throw err
