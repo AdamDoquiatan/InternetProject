@@ -1,5 +1,5 @@
 const express = require('express')
-const loginController = require('../controllers/loginController')
+const loginController = require('../controllers/signupLoginController')
 const router = express.Router()
 
 router.route('/stashUserSignupData').post(loginController.stashUserSignupData)

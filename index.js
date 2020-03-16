@@ -18,7 +18,7 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-let loginRoutes = require('./routes/loginRoutes')
+let loginRoutes = require('./routes/signupLoginRoutes')
 app.use('/', loginRoutes)
 
 let dashboardRoutes = require('./routes/dashboardRoutes')

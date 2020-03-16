@@ -27,7 +27,6 @@ CREATE TABLE posts (
 
 
 
-
 -- OTHER --
 
 -- Creates a new user --
@@ -40,3 +39,8 @@ SELECT user_id FROM users WHERE email = 'adamdoq@gmail.com' && password = 'passw
 -- Gets a user's profile (everything except the user_id, email, and password) --
 SELECT full_name, bio, img_url, country, date_of_birth, post_count, message_count, like_count FROM users WHERE user_id = 36;
 
+-- Create a post --
+INSERT INTO posts (user_id, user_img_url, subject, content, topic) VALUES (36, 'testURL', 'test subject', 'test content', 'test topic');
+
+-- Get last five posts --
+SELECT * FROM posts WHERE user_id = 36 ORDER BY created_at DESC LIMIT 5;
