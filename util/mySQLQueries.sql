@@ -25,6 +25,32 @@ CREATE TABLE posts (
   reply_count INT DEFAULT 0 NOT NULL
 );
 
+CREATE TABLE replies (
+  reply_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  post_id INT NOT NULL,
+  user_id INT NOT NULL,
+  user_img_url VARCHAR(2083) NOT NULL,
+  content TEXT NOT NULL,
+  created_at DATETIME DEFAULT NOW() NOT NULL
+);
+
+CREATE TABLE convos (
+  convo_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user1_id INT NOT NULL,
+  user2_id INT NOT NULL,
+  user2_img_url VARCHAR(2083) NOT NULL,
+  updated_at DATETIME DEFAULT NOW() NOT NULL
+);
+
+CREATE TABLE messages (
+  message_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  convo_id INT NOT NULL,
+  user_id INT NOT NULL,
+  user_img_url VARCHAR(2083) NOT NULL,
+  content TEXT NOT NULL,
+  created_at DATETIME DEFAULT NOW() NOT NULL
+);
+
 
 
 -- OTHER --
