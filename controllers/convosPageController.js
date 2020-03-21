@@ -16,7 +16,7 @@ exports.renderConvosPage = async (req, res) => {
 		// const convosData = await convosHelpers.getAllConvos({})
 		// const messagesData = await messagesData.getAllMessages({})
 		// res.render('convosPage', { user_data: userData }, { convosData: convosData }, { messagesData: messagesData })
-		res.render('convosPage')
+		res.render('convosPage', { convosPageJSCSS: true })
 	} catch (err) {
 		res.send('' + err)
 	}

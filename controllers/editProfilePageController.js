@@ -12,7 +12,7 @@ exports.renderEditProfilePage = async (req, res) => {
 		// Right now we're just rendering the raw data to the screen
 		// const userData = await userHelpers.getProfile({})
 		// res.render('editProfilePage', { user_data: userData })
-		res.render('editProfilePage')
+		res.render('editProfilePage', { editProfilePageJSCSS: true })
 	} catch (err) {
 		res.send('' + err)
 	}

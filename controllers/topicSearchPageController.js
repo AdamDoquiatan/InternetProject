@@ -14,7 +14,7 @@ exports.renderTopicSearchPage = async (req, res) => {
 		// const postData = await postHelpers.getPostsMatchingTopic({})
 		// const replyHelpers = await replyHelpers.getAllReplies({})
 		// res.render('topicSearchPage', { post_data: post_data }, { reply_data: reply_data })
-		res.render('topicSearchPage')
+		res.render('topicSearchPage', { topicSearchPageJSCSS: true })
 	} catch (err) {
 		res.send('' + err)
 	}

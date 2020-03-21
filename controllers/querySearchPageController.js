@@ -14,7 +14,7 @@ exports.renderQuerySearchPage = async (req, res) => {
 		// const postData = await postHelpers.getQueriedPosts({})
 		// const replyHelpers = await replyHelpers.getAllReplies({})
 		// res.render('querySearchPage', { post_data: post_data }, { reply_data: reply_data })
-		res.render('querySearchPage')
+		res.render('querySearchPage', { querySearchPageJSCSS: true })
 	} catch (err) {
 		res.send('' + err)
 	}
