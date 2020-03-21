@@ -18,11 +18,29 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-let loginRoutes = require('./routes/signupLoginRoutes')
-app.use('/', loginRoutes)
+let signupLoginRoutes = require('./routes/signupLoginRoutes')
+app.use('/', signupLoginRoutes)
 
 let dashboardRoutes = require('./routes/dashboardRoutes')
 app.use('/', dashboardRoutes)
+
+let convosPageRoutes = require('./routes/convosPageRoutes')
+app.use('/', convosPageRoutes)
+
+let editProfilePageRoutes = require('./routes/editProfilePageRoutes')
+app.use('/', editProfilePageRoutes)
+
+let profilePageRoutes = require('./routes/profilePageRoutes')
+app.use('/', profilePageRoutes)
+
+let querySearchPageRoutes = require('./routes/querySearchPageRoutes')
+app.use('/', querySearchPageRoutes)
+
+let sendMessagePageRoutes = require('./routes/sendMessagePageRoutes')
+app.use('/', sendMessagePageRoutes)
+
+let topicSearchPageRoutes = require('./routes/topicSearchPageRoutes')
+app.use('/', topicSearchPageRoutes)
 
 // Points towards location of js and css folders
 app.use(express.static(path.join(__dirname, '/public')))
