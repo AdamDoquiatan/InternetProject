@@ -7,16 +7,21 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 /////// SIGNUP ///////
-let stashedUserSignupData = {}
 
 exports.stashUserSignupData = (req, res) => {
-	stashedUserSignupData = req.body
-	res.send('Data stashed')
+	req.session.email = req.body.email
+	req.session.password = req.body.password
+	res.end()
+}
+
+exports.renderSignupPage = (req, res, next) => {
+	res.render('signupPage', { signupPageJSCSS: true })
 }
 
 exports.createUser = async (req, res) => {
+	const stashedUserData = req.session
 	const userData = req.body
-	const fullUserData = joinUserAttributes(getStashedUserSignupData(), userData)
+	const fullUserData = joinUserAttributes(stashedUserData, userData)
 	console.log(fullUserData)
 
 	try {
@@ -38,10 +43,6 @@ const saveUserToDB = async (fullUserData) => {
 	} catch (err) {
 		throw err
 	}
-}
-
-const getStashedUserSignupData = () => {
-	return stashedUserSignupData
 }
 
 /////// LOGIN ///////

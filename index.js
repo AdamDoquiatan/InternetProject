@@ -18,6 +18,13 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+let session = require('express-session')
+app.use(
+	session({
+		secret: 'secret'
+	})
+)
+
 let signupLoginRoutes = require('./routes/signupLoginRoutes')
 app.use('/', signupLoginRoutes)
 
@@ -47,10 +54,6 @@ app.use(express.static(path.join(__dirname, '/public')))
 
 app.get('/', (req, res) => {
 	res.render('landingPage', { landingPageJSCSS: true })
-})
-
-app.get('/signup', (req, res) => {
-	res.render('signupPage', { signupPageJSCSS: true })
 })
 
 app.listen(process.env.PORT || 3000)

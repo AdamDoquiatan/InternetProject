@@ -6,8 +6,9 @@ const processRegistration = async () => {
 		return
 	}
 	try {
-		await stashUserSignupData(userData)
-		window.location.replace('/signup')
+		stashUserSignupData(userData).then(() => {
+			window.location.replace('/signup')
+		})
 	} catch (err) {
 		console.log(err)
 	}
@@ -63,15 +64,15 @@ const checkPasswordFieldsMatch = (userData) => {
 }
 
 const stashUserSignupData = async (userData) => {
+	console.log('this one:' + JSON.stringify(userData))
 	try {
-		const response = await fetch('/stashUserSignupData', {
+		await fetch('/stashUserSignupData', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(userData)
 		})
-		const data = await response.text()
 	} catch (err) {
 		return err
 	}

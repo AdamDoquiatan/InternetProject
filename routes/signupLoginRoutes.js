@@ -1,10 +1,11 @@
 const express = require('express')
-const loginController = require('../controllers/signupLoginController')
+const signupLoginController = require('../controllers/signupLoginController')
 const router = express.Router()
 
-router.route('/stashUserSignupData').post(loginController.stashUserSignupData)
-router.route('/createUser').post(loginController.createUser)
-router.route('/postmanSaveUserToDB').post(loginController.postmanSaveUserToDB)
-router.route('/validateLoginCredentials').post(loginController.validateLoginCredentials)
+router.route('/stashUserSignupData').post(signupLoginController.stashUserSignupData)
+router.route('/signup').get(signupLoginController.renderSignupPage)
+router.route('/createUser').post(signupLoginController.createUser)
+router.route('/postmanSaveUserToDB').post(signupLoginController.postmanSaveUserToDB)
+router.route('/validateLoginCredentials').post(signupLoginController.validateLoginCredentials)
 
 module.exports = router
