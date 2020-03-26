@@ -21,7 +21,10 @@ app.use(bodyParser.json())
 let session = require('express-session')
 app.use(
 	session({
-		secret: 'secret'
+		secret: 'secret',
+		name: 'session_data',
+		resave: true,
+		saveUninitialized: false
 	})
 )
 
