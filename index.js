@@ -28,8 +28,11 @@ app.use(
 	})
 )
 
-let signupLoginRoutes = require('./routes/signupLoginRoutes')
-app.use('/', signupLoginRoutes)
+let landingPageRoutes = require('./routes/landingPageRoutes')
+app.use('/', landingPageRoutes)
+
+let signupPageRoutes = require('./routes/signupPageRoutes')
+app.use('/', signupPageRoutes)
 
 let dashboardRoutes = require('./routes/dashboardRoutes')
 app.use('/', dashboardRoutes)
