@@ -120,27 +120,6 @@ const checkAllFieldsFilledSignupPage = (userData) => {
 	return true
 }
 
-// const createUser = async (userData) => {
-// 	try {
-// 		const response = await fetch('/createUser', {
-// 			method: 'POST',
-// 			headers: {
-// 				'Content-Type': 'application/json'
-// 			},
-// 			body: JSON.stringify(userData)
-// 		})
-// 		const data = await response.json()
-// 		if ('error' in data) {
-// 			throw data['error']
-// 		} else {
-// 			const userId = data['user_id']
-// 			return userId
-// 		}
-// 	} catch (err) {
-// 		throw err
-// 	}
-// }
-
 const createUser = async (req, userData) => {
 	const stashedUserData = req.session
 	const fullUserData = joinUserAttributes(stashedUserData, userData)
@@ -168,23 +147,27 @@ const saveUserToDB = async (fullUserData) => {
 }
 
 /////// LOGIN ///////
-exports.validateLoginCredentials = async (req, res) => {
+exports.login = async (req, res) => {
 	try {
-		const userId = await userModel.getUserId(req.body)
-		console.log('user id: ' + userId)
-		res.send({ user_id: userId })
+		const userId = await validateLoginCredentials(req)
+		if (userId === undefined) {
+			console.log('invalid login credentials')
+			return
+		} else {
+			console.log('going to dashboard with userId: ' + userId)
+			res.redirect('/dashboard')
+		}
 	} catch (err) {
-		res.send(err)
+		throw err
 	}
 }
 
-/////// For Testing Endpoints w/ postman ///////
-exports.postmanSaveUserToDB = async (req, res) => {
+const validateLoginCredentials = async (req) => {
 	try {
-		let userData = req.body
-		await userModel.createUser(userData)
-		res.send('new user added')
+		const userId = await userModel.getUserId(req.body)
+		console.log('user id: ' + userId)
+		return userId
 	} catch (err) {
-		res.send(err)
+		throw err
 	}
 }

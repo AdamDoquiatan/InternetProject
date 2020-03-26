@@ -1,10 +1,10 @@
 <h1>Landing Page</h1>
-<div class='loginModule'>
+<form class='loginModule' action='/login' method="POST">
   <h2>Login</h2>
-  <input class="inp_email" type="text" maxlength="40" placeholder="email">
-  <input class="inp_login_password" type="password" maxlength="40" placeholder="password">
-  <button class="btn_login" onClick=login()>Login</button>
-</div>
+  <input class="inp_email" name="email" type="text" maxlength="40" placeholder="email">
+  <input class="inp_login_password" name="password" type="password" maxlength="40" placeholder="password">
+  <input class="btn_login" name="login" type="submit" value="Login"/>
+</form>
 <br>
 <form class='signupModule' action='/processRegistration' method="POST">
   <h2>Sign up</h2>
