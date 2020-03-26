@@ -7,6 +7,7 @@ app.use(bodyParser.json())
 
 exports.renderSendMessagePage = async (req, res) => {
 	try {
+		const userId = req.session.userId
 		res.render('sendMessagePage', { sendMessagePageJSCSS: true })
 	} catch (err) {
 		res.send('' + err)

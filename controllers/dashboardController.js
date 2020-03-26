@@ -11,8 +11,9 @@ exports.renderDashboard = async (req, res) => {
 	try {
 		// These functions pull data needed to render the page from the database. Then you can do whatever you want with it.
 		// Right now we're just rendering the raw data to the screen
-		const userData = await userHelpers.getProfile({ user_id: req.params.userId })
-		const postData = await postHelpers.getLastFivePosts({ user_id: req.params.userId })
+		const userId = req.session.userId
+		const userData = await userHelpers.getProfile({ user_id: userId })
+		const postData = await postHelpers.getLastFivePosts({ user_id: userId })
 		res.render('dashboard', {
 			dashboardJSCSS: true,
 			user_data: JSON.stringify(userData),

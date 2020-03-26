@@ -14,6 +14,7 @@ exports.login = async (req, res) => {
 			console.log('invalid login credentials')
 			return
 		} else {
+			req.session.userId = userId
 			console.log('going to dashboard with userId: ' + userId)
 			res.redirect('/dashboard')
 		}
@@ -63,7 +64,7 @@ const gatherUserData = (req) => {
 }
 
 const validateUserData = (userData) => {
-	if (!checkAllFieldsFilledLandingPage(userData) || !checkPasswordFieldsMatch(userData)) {
+	if (!checkAllFieldsFilled(userData) || !checkPasswordFieldsMatch(userData)) {
 		return false
 	}
 	userData['full_name'] = userData.first_name + ' ' + userData.last_name
@@ -74,7 +75,7 @@ const validateUserData = (userData) => {
 	return true
 }
 
-const checkAllFieldsFilledLandingPage = (userData) => {
+const checkAllFieldsFilled = (userData) => {
 	const values = Object.values(userData)
 	for (value of values) {
 		if (value === '' || value === ' ') {

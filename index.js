@@ -24,7 +24,12 @@ app.use(
 		secret: 'secret',
 		name: 'session_data',
 		resave: true,
-		saveUninitialized: false
+		saveUninitialized: false,
+		rolling: true,
+		cookie: {
+			httpOnly: true,
+			maxAge: 600000 //10 minutes
+		}
 	})
 )
 

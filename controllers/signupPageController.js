@@ -14,11 +14,12 @@ exports.renderSignupPage = (req, res) => {
 
 exports.completeRegistration = async (req, res) => {
 	const userData = gatherUserDetails(req)
-	if (!checkAllFieldsFilledSignupPage(userData)) {
+	if (!checkAllFieldsFilled(userData)) {
 		return
 	}
 	try {
 		const userId = await createUser(req, userData)
+		req.session.userId = userId
 		console.log('going to dashboard with userId: ' + userId)
 		res.redirect('/dashboard')
 	} catch (err) {
@@ -43,7 +44,7 @@ const gatherUserDetails = (req) => {
 	return userData
 }
 
-const checkAllFieldsFilledSignupPage = (userData) => {
+const checkAllFieldsFilled = (userData) => {
 	const values = Object.values(userData)
 	for (value of values) {
 		if (value === '' || value === ' ') {
