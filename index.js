@@ -64,6 +64,7 @@ app.use('/', topicSearchPageRoutes)
 app.use(express.static(path.join(__dirname, '/public')))
 
 app.get('/', (req, res) => {
+	req.session.destroy()
 	res.render('landingPage', { landingPageJSCSS: true })
 })
 
