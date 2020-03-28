@@ -13,13 +13,22 @@ exports.renderDashboard = async (req, res) => {
 		// Right now we're just rendering the raw data to the screen
 		const userId = req.session.userId
 		const userData = await userHelpers.getProfile({ user_id: userId })
-		const postData = await postHelpers.getLastFivePosts({ user_id: userId })
+		const postData = await postHelpers.getLastFiveDiscussions({ user_id: userId })
 		res.render('dashboard', {
 			dashboardJSCSS: true,
 			user_data: JSON.stringify(userData),
 			post_data: JSON.stringify(postData)
 		})
 		//res.send(userData)
+	} catch (err) {
+		res.send('' + err)
+	}
+}
+
+exports.createPost = async (req, res) => {
+	try {
+		await postHelpers.createPost(req)
+		res.redirect('/dashboard')
 	} catch (err) {
 		res.send('' + err)
 	}

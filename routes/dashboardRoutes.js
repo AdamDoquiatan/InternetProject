@@ -4,5 +4,6 @@ const dashboardController = require('../controllers/dashboardController')
 const is_authenticated = require('../util/is-auth')
 
 router.route('/dashboard').get(is_authenticated, dashboardController.renderDashboard)
+router.route('/createPost').post(is_authenticated, dashboardController.createPost)
 
 module.exports = router

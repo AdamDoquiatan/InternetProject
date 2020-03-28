@@ -68,5 +68,13 @@ SELECT full_name, bio, img_url, country, date_of_birth, post_count, message_coun
 -- Create a post --
 INSERT INTO posts (user_id, user_img_url, subject, content, topic) VALUES (36, 'testURL', 'test subject', 'test content', 'test topic');
 
+-- Get Last five discussions (ones user 36 has either created or replied to-- 
+SELECT p.post_id, p.user_id, p.user_img_url, p.subject, p.content, p.created_at, p.topic, p.reply_count FROM posts AS p
+LEFT JOIN replies AS r
+ON r.user_id = p.user_id
+WHERE p.user_id = 36 OR r.user_id = 36
+ORDER BY created_at DESC LIMIT 5;
+
+
 -- Get last five posts --
-SELECT * FROM posts WHERE user_id = 36 ORDER BY created_at DESC LIMIT 5;
+-- SELECT * FROM posts WHERE user_id = 36 ORDER BY created_at DESC LIMIT 5;
