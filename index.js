@@ -28,7 +28,8 @@ app.use(
 		rolling: true,
 		cookie: {
 			httpOnly: true,
-			maxAge: 600000 //10 minutes
+			// maxAge: 600000 //10 minutes
+			maxAge: 365 * 24 * 60 * 60 * 1000 //one year
 		}
 	})
 )

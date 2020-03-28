@@ -1,9 +1,9 @@
 const pool = require('../util/database')
 
-// Creates a new post
+// Creates a new post + incements user's post count
 exports.createPost = async (postData) => {
 	try {
-		const sql =
+		let sql =
 			'INSERT INTO posts (user_id, user_img_url, subject, content, topic) VALUES ("' +
 			postData.user_id +
 			'","' +
@@ -16,6 +16,10 @@ exports.createPost = async (postData) => {
 			postData.topic +
 			'");'
 		await pool.execute(sql)
+
+		sql = 'UPDATE users SET post_count = post_count + 1 WHERE user_id = "' + postData.user_id + '";'
+		await pool.execute(sql)
+
 		return
 	} catch (err) {
 		throw err
@@ -26,7 +30,7 @@ exports.createPost = async (postData) => {
 exports.getLastFiveDiscussions = async (userData) => {
 	try {
 		const response = await pool.query(
-			'SELECT p.post_id, p.user_id, p.user_img_url, p.subject, p.content, p.created_at, p.topic, p.reply_count FROM posts AS p' +
+			'SELECT DISTINCT p.post_id, p.user_id, p.user_img_url, p.subject, p.content, p.created_at, p.topic, p.reply_count FROM posts AS p' +
 				' LEFT JOIN replies AS r' +
 				' ON r.user_id = p.user_id' +
 				' WHERE p.user_id = ' +

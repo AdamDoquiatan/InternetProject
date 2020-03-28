@@ -1,7 +1,7 @@
 <h1>Dashboard</h1>
 <h2>UserData</h2>
 <p>{{ user_data }}</p>
-<h2>PostData</h2>
+<h2>Last 5 Discussions (Posts) Data</h2>
 <p>{{ post_data }}</p>
 <h2>Temp Page Links</h2>
 <a href="../querySearchPage">Query Search Page</a>
@@ -15,7 +15,7 @@
 <form class='createPostModule' action='/createPost' method="POST">
   <h2>Create Post</h2>
   <input class="inp_subject" name="subject" type="text" maxlength="40" placeholder="subject">
-  <input class="inp_details" name="details" type="text" maxlength="500" placeholder="details">
+  <input class="inp_content" name="content" type="text" maxlength="500" placeholder="details">
   <label for="inp_topic">Topic:</label>
   <select class="inp_topic" name="topic">
     <option value="corona">Corona</option>

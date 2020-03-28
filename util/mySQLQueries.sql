@@ -65,16 +65,31 @@ SELECT user_id FROM users WHERE email = 'adamdoq@gmail.com' && password = 'passw
 -- Gets a user's profile (everything except the user_id, email, and password) --
 SELECT full_name, bio, img_url, country, date_of_birth, post_count, message_count, like_count FROM users WHERE user_id = 36;
 
--- Create a post --
+-- Create a post + increment user's post count --
 INSERT INTO posts (user_id, user_img_url, subject, content, topic) VALUES (36, 'testURL', 'test subject', 'test content', 'test topic');
 
--- Get Last five discussions (ones user 36 has either created or replied to-- 
-SELECT p.post_id, p.user_id, p.user_img_url, p.subject, p.content, p.created_at, p.topic, p.reply_count FROM posts AS p
+UPDATE users
+SET post_count = post_count + 1
+WHERE user_id = 44;
+
+-- Get Last five discussions (ones the user has either created or replied to-- 
+SELECT DISTINCT p.post_id, p.user_id, p.user_img_url, p.subject, p.content, p.created_at, p.topic, p.reply_count FROM posts AS p
 LEFT JOIN replies AS r
 ON r.user_id = p.user_id
-WHERE p.user_id = 36 OR r.user_id = 36
+WHERE p.user_id = 44 OR r.user_id = 44
 ORDER BY created_at DESC LIMIT 5;
 
+-- Get all user's posts --
+SELECT * FROM posts WHERE user_id = 44 ORDER BY created_at DESC;
 
--- Get last five posts --
--- SELECT * FROM posts WHERE user_id = 36 ORDER BY created_at DESC LIMIT 5;
+
+-- Creates a reply + increments reply count --
+INSERT INTO replies (post_id, user_id, user_img_url, content) VALUES (22, 44, 'test url2', 'test content2');
+
+UPDATE posts
+SET reply_count = reply_count + 1
+WHERE post_id = 26;
+
+
+-- Get all replies for post --
+SELECT * FROM replies WHERE post_id = 18;
