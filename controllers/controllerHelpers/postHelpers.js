@@ -42,3 +42,11 @@ exports.getQueriedPosts = async (queryString) => {
 		throw err
 	}
 }
+
+exports.getPostsByTopic = async (queryString) => {
+	try {
+		return await postModel.getPostsByTopic(queryString)
+	} catch (err) {
+		throw err
+	}
+}

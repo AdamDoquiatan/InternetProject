@@ -80,6 +80,20 @@ exports.getQueriedPosts = async (queryData) => {
 	}
 }
 
+exports.getPostsByTopic = async (queryData) => {
+	try {
+		const response = await pool.query('SELECT * from posts WHERE topic = "' + queryData.queryString + '";')
+		if (response[0].length !== 0) {
+			const responseData = response[0]
+			return responseData
+		} else {
+			return {}
+		}
+	} catch (err) {
+		throw err
+	}
+}
+
 // SQL Query Template
 exports.__nameHere__ = async (userData) => {
 	try {

@@ -3,24 +3,33 @@
 <p>{{ user_data }}</p>
 <h2>Last 5 Discussions (Posts) Data</h2>
 <p>{{ post_data }}</p>
-<h2>Temp Page Links</h2>
-<a href="../topicSearchPage">&nbsp;Topic Search Page</a>
-<a href="../profilePage">&nbsp;Profile Page</a>
-<a href="../sendMessagePage">&nbsp;Send Message Page</a>
 <a href="../editProfilePage">&nbsp;Edit Profile Page</a>
 <a href="../convosPage">&nbsp;Convos Page</a>
 <br>
 <br>
+
 <form class="searchByQuery" action='/querySearchPage' method="GET">
   <h2>Search By Query</h2>
   <input class="inp_searchBar" name="searchQuery" type="text" maxlength="40" placeholder="Search">
   <input class="btn_searchQuery" type="submit" value="search" />
 </form>
-<br>
-<br>
 
 <br>
 <br>
+
+<form class='searchByTopic' action='/topicSearchPage' method="GET">
+  <h2>Search By Topic</h2>
+  <label for="inp_topic">Topic:</label>
+  <select class="inp_topic" name="topic">
+    <option value="corona">Corona</option>
+    <option value="not_corona">Not Corona</option>
+  </select>
+  <input class="btn_searchTopic" type="submit" value="search" />
+</form>
+
+<br>
+<br>
+
 <form class='createPostModule' action='/createPost' method="POST">
   <h2>Create Post</h2>
   <input class="inp_subject" name="subject" type="text" maxlength="40" placeholder="subject">
@@ -32,6 +41,7 @@
   </select>
   <input class="btn_post" name="login" type="submit" value="Post to Timeline" />
 </form>
+
 <br>
 <br>
 <a href="/">Logout</a>
