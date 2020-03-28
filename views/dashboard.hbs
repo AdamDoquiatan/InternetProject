@@ -4,12 +4,21 @@
 <h2>Last 5 Discussions (Posts) Data</h2>
 <p>{{ post_data }}</p>
 <h2>Temp Page Links</h2>
-<a href="../querySearchPage">Query Search Page</a>
 <a href="../topicSearchPage">&nbsp;Topic Search Page</a>
 <a href="../profilePage">&nbsp;Profile Page</a>
 <a href="../sendMessagePage">&nbsp;Send Message Page</a>
 <a href="../editProfilePage">&nbsp;Edit Profile Page</a>
 <a href="../convosPage">&nbsp;Convos Page</a>
+<br>
+<br>
+<form class="searchByQuery" action='/querySearchPage' method="GET">
+  <h2>Search By Query</h2>
+  <input class="inp_searchBar" name="searchQuery" type="text" maxlength="40" placeholder="Search">
+  <input class="btn_searchQuery" type="submit" value="search" />
+</form>
+<br>
+<br>
+
 <br>
 <br>
 <form class='createPostModule' action='/createPost' method="POST">

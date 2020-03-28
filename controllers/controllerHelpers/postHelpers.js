@@ -34,3 +34,11 @@ exports.getLastFiveDiscussions = async (userId) => {
 		throw err
 	}
 }
+
+exports.getQueriedPosts = async (queryString) => {
+	try {
+		return await postModel.getQueriedPosts(queryString)
+	} catch (err) {
+		throw err
+	}
+}

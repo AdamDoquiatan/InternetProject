@@ -26,7 +26,7 @@ exports.createPost = async (postData) => {
 	}
 }
 
-// Change this to last 5 discussions -- ie not just posts that user started but all participated in)
+// Gets the last 5 discussions -- not just posts that user started, but also those they've replied to)
 exports.getLastFiveDiscussions = async (userData) => {
 	try {
 		const response = await pool.query(
@@ -50,12 +50,25 @@ exports.getLastFiveDiscussions = async (userData) => {
 	}
 }
 
-/////////////////////////////////////////
 exports.getAllPostsByUser = async (userData) => {
 	try {
 		const response = await pool.query(
 			'SELECT * FROM posts WHERE user_id = "' + userData.user_id + '" ORDER BY created_at DESC;'
 		)
+		if (response[0].length !== 0) {
+			const responseData = response[0]
+			return responseData
+		} else {
+			return {}
+		}
+	} catch (err) {
+		throw err
+	}
+}
+
+exports.getQueriedPosts = async (queryData) => {
+	try {
+		const response = await pool.query('SELECT * from posts WHERE subject LIKE "%' + queryData.queryString + '%";')
 		if (response[0].length !== 0) {
 			const responseData = response[0]
 			return responseData

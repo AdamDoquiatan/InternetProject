@@ -53,7 +53,7 @@ CREATE TABLE messages (
 
 
 
--- OTHER --
+---------- USER QUERIES ----------
 
 -- Creates a new user --
 INSERT INTO users (email, password, full_name, bio, img_url, country, date_of_birth)
@@ -64,6 +64,9 @@ SELECT user_id FROM users WHERE email = 'adamdoq@gmail.com' && password = 'passw
 
 -- Gets a user's profile (everything except the user_id, email, and password) --
 SELECT full_name, bio, img_url, country, date_of_birth, post_count, message_count, like_count FROM users WHERE user_id = 36;
+
+
+---------- POST QUERIES ----------
 
 -- Create a post + increment user's post count --
 INSERT INTO posts (user_id, user_img_url, subject, content, topic) VALUES (36, 'testURL', 'test subject', 'test content', 'test topic');
@@ -79,9 +82,21 @@ ON r.user_id = p.user_id
 WHERE p.user_id = 44 OR r.user_id = 44
 ORDER BY created_at DESC LIMIT 5;
 
+-- Get Queried Posts --
+SELECT * from posts
+WHERE subject
+LIKE '%test%';
+
+
+
 -- Get all user's posts --
 SELECT * FROM posts WHERE user_id = 44 ORDER BY created_at DESC;
 
+
+
+
+
+---------- REPLY QUERIES ----------
 
 -- Creates a reply + increments reply count --
 INSERT INTO replies (post_id, user_id, user_img_url, content) VALUES (22, 44, 'test url2', 'test content2');
@@ -93,3 +108,9 @@ WHERE post_id = 26;
 
 -- Get all replies for post --
 SELECT * FROM replies WHERE post_id = 18;
+
+
+---------- CONVO QUERIES ----------
+
+
+
