@@ -1,7 +1,9 @@
 const express = require('express')
 const app = express()
-const userHelpers = require('./controllerHelpers/userHelpers')
-const postHelpers = require('./controllerHelpers/postHelpers')
+// const userHelpers = require('./controllerHelpers/userHelpers')
+// const postHelpers = require('./controllerHelpers/postHelpers')
+const userModel = require('../models/userModel')
+const postModel = require('../models/postModel')
 const bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -12,8 +14,8 @@ exports.renderDashboard = async (req, res) => {
 		// These functions pull data needed to render the page from the database. Then you can do whatever you want with it.
 		// Right now we're just rendering the raw data to the screen
 		const userId = req.session.userId
-		const userData = await userHelpers.getProfile({ user_id: userId })
-		const postData = await postHelpers.getLastFiveDiscussions({ user_id: userId })
+		const userData = await userModel.getUserProfile({ user_id: userId })
+		const postData = await postModel.getLastFiveDiscussions({ user_id: userId })
 		res.render('dashboard', {
 			dashboardJSCSS: true,
 			user_data: JSON.stringify(userData),
@@ -27,9 +29,28 @@ exports.renderDashboard = async (req, res) => {
 
 exports.createPost = async (req, res) => {
 	try {
-		await postHelpers.createPost(req)
+		const postData = gatherPostData(req)
+		await postModel.createPost(postData)
 		res.redirect('/dashboard')
 	} catch (err) {
 		res.send('' + err)
 	}
+}
+
+const gatherPostData = (req) => {
+	const postData = {
+		user_id: '',
+		user_img_url: '',
+		subject: '',
+		content: '',
+		topic: ''
+	}
+
+	postData['user_id'] = req.session.userId
+	postData['user_img_url'] = req.body.user_img_url
+	postData['subject'] = req.body.subject
+	postData['content'] = req.body.content
+	postData['topic'] = req.body.topic
+
+	return postData
 }

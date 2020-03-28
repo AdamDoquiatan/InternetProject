@@ -69,7 +69,12 @@ const createUser = async (req, userData) => {
 }
 
 const joinUserAttributes = (stashedUserSignupData, userData) => {
-	return { email: stashedUserSignupData.email, password: stashedUserSignupData.password, ...userData }
+	return {
+		full_name: stashedUserSignupData.fullName,
+		email: stashedUserSignupData.email,
+		password: stashedUserSignupData.password,
+		...userData
+	}
 }
 
 const saveUserToDB = async (fullUserData) => {

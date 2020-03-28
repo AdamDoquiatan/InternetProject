@@ -37,8 +37,8 @@ const validateLoginCredentials = async (req) => {
 
 exports.processRegistration = (req, res) => {
 	const userData = gatherUserData(req)
-	console.log('userdata: ' + JSON.stringify(userData))
-	if (!validateUserData(userData)) {
+	userdata = validateUserData(userData)
+	if (!userData) {
 		return
 	}
 	stashUserSignupData(req, userData)
@@ -72,7 +72,7 @@ const validateUserData = (userData) => {
 	delete userData.last_name
 	delete userData.confirm_password
 
-	return true
+	return userData
 }
 
 const checkAllFieldsFilled = (userData) => {
@@ -95,6 +95,7 @@ const checkPasswordFieldsMatch = (userData) => {
 }
 
 const stashUserSignupData = (req, userData) => {
+	req.session.fullName = userData.full_name
 	req.session.email = userData.email
 	req.session.password = userData.password
 }

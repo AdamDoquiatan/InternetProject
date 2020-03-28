@@ -2,6 +2,7 @@ const pool = require('../util/database')
 
 exports.createUser = async (userData) => {
 	try {
+		console.log(JSON.stringify(userData))
 		//creates a new user
 		const sql =
 			'INSERT INTO users (email, password, full_name, bio, img_url, country, date_of_birth) VALUES("' +
@@ -53,7 +54,7 @@ exports.getUserProfile = async (userData) => {
 	try {
 		console.log(userData)
 		const response = await pool.execute(
-			'SELECT full_name, bio, img_url, country, date_of_birth, post_count, message_count, like_count FROM users WHERE user_id = "' +
+			'SELECT user_id, full_name, bio, img_url, country, date_of_birth, post_count, message_count, like_count FROM users WHERE user_id = "' +
 				userData.user_id +
 				'";'
 		)
