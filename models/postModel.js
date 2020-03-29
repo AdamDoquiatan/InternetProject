@@ -31,13 +31,22 @@ exports.getFiveDiscussions = async (userPostData) => {
 	try {
 		if (userPostData.posts_shown < 0) return undefined
 		const response = await pool.query(
-			'SELECT DISTINCT p.post_id, p.user_id, p.user_img_url, p.subject, p.content, p.created_at, p.topic, p.reply_count FROM posts AS p' +
-				' LEFT JOIN replies AS r' +
-				' ON r.user_id = p.user_id' +
-				' WHERE p.user_id = ' +
+			'SELECT posts.*, replies.user_id AS "reply_ref_user_id" from posts' +
+				' JOIN replies' +
+				' WHERE posts.user_id = "' +
 				userPostData.user_id +
-				' OR r.user_id = ' +
+				'"' +
+				' GROUP BY post_id' +
+				' UNION' +
+				' SELECT posts.*, replies.user_id AS "reply_ref_user_id" from posts' +
+				' JOIN replies' +
+				' ON posts.post_id = replies.post_id' +
+				' WHERE posts.user_id != "' +
 				userPostData.user_id +
+				'" AND replies.user_id = "' +
+				userPostData.user_id +
+				'"' +
+				' GROUP BY post_id' +
 				' ORDER BY created_at DESC LIMIT 5 OFFSET ' +
 				userPostData.posts_shown +
 				';'

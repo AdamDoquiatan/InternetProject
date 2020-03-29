@@ -77,11 +77,21 @@ SET post_count = post_count + 1
 WHERE user_id = 50;
 
 -- Get Last five discussions (ones the user has either created or replied to-- 
-SELECT DISTINCT p.post_id, p.user_id, p.user_img_url, p.subject, p.content, p.created_at, p.topic, p.reply_count FROM posts AS p
-LEFT JOIN replies AS r
-ON r.user_id = p.user_id
-WHERE p.user_id = 44 OR r.user_id = 44
+SELECT posts.*, replies.user_id AS 'reply user_id' from posts
+JOIN replies
+WHERE posts.user_id = 36
+GROUP BY post_id
+UNION
+SELECT posts.*, replies.user_id AS 'reply user_id' from posts
+JOIN replies
+ON posts.post_id = replies.post_id
+WHERE posts.user_id != 36 AND replies.user_id = 36
+GROUP BY post_id
 ORDER BY created_at DESC LIMIT 5;
+
+
+
+
 
 -- Get sum of all discussions started --
 SELECT COUNT(*) AS "sum" from posts
@@ -110,11 +120,11 @@ SELECT * FROM posts WHERE user_id = 44 ORDER BY created_at DESC;
 ---------- REPLY QUERIES ----------
 
 -- Creates a reply + increments reply count --
-INSERT INTO replies (post_id, user_id, user_img_url, content) VALUES (2, 50, 'test url2', 'test content2');
+INSERT INTO replies (post_id, user_id, user_img_url, content) VALUES (30, 36, 'test url2', 'test content2');
 
 UPDATE posts
 SET reply_count = reply_count + 1
-WHERE post_id = 2;
+WHERE post_id = 30;
 
 
 -- Get all replies for post --
