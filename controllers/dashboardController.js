@@ -1,7 +1,5 @@
 const express = require('express')
 const app = express()
-// const userHelpers = require('./controllerHelpers/userHelpers')
-// const postHelpers = require('./controllerHelpers/postHelpers')
 const userModel = require('../models/userModel')
 const postModel = require('../models/postModel')
 const bodyParser = require('body-parser')

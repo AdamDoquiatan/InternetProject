@@ -43,8 +43,8 @@ app.use('/', signupPageRoutes)
 let dashboardRoutes = require('./routes/dashboardRoutes')
 app.use('/', dashboardRoutes)
 
-let convosPageRoutes = require('./routes/convosPageRoutes')
-app.use('/', convosPageRoutes)
+let convoPageRoutes = require('./routes/convoPageRoutes')
+app.use('/', convoPageRoutes)
 
 let editProfilePageRoutes = require('./routes/editProfilePageRoutes')
 app.use('/', editProfilePageRoutes)

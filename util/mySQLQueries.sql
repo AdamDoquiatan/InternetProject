@@ -45,13 +45,14 @@ CREATE TABLE convos (
 CREATE TABLE messages (
   message_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   convo_id INT NOT NULL,
-  user_id INT NOT NULL,
-  user_img_url VARCHAR(2083) NOT NULL,
+  sender_user_id INT NOT NULL,
+  reciever_user_id INT NOT NULL,
+  sender_user_img_url VARCHAR(2083) NOT NULL,
   content TEXT NOT NULL,
   created_at DATETIME DEFAULT NOW() NOT NULL
 );
 
-
+INSERT INTO messages (convo_id, sender_user_id, reciever_user_id, sender_user_img_url, content) VALUES (1, 36, 44, 'testURL', 'testcontent')
 
 ---------- USER QUERIES ----------
 
@@ -110,7 +111,19 @@ WHERE post_id = 26;
 SELECT * FROM replies WHERE post_id = 18;
 
 
----------- CONVO QUERIES ----------
+---------- CONVO AND MESSAGE QUERIES ----------
 
+-- Creates a convo + create a new message + increments message count for that convo --
+INSERT INTO convos (user1_id, user2_id, user2_img_url) VALUES (36, 44, 'testURL');
+INSERT INTO messages (convo_id, sender_user_id, reciever_user_id, sender_user_img_url, content) VALUES (1, 36, 44, 'testURL', 'testcontent');
 
+UPDATE users
+SET message_count = message_count + 1
+WHERE user_id = 44;
+
+-- Gets all user's convos --
+SELECT * FROM convos WHERE user1_id = 36 OR user2_id = 36;
+
+-- Gets all messages in a convo --
+SELECT * FROM messages WHERE convo_id = 1;
 
