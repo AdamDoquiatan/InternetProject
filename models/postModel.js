@@ -27,20 +27,55 @@ exports.createPost = async (postData) => {
 }
 
 // Gets the last 5 discussions -- not just posts that user started, but also those they've replied to)
-exports.getLastFiveDiscussions = async (userData) => {
+exports.getFiveDiscussions = async (userPostData) => {
 	try {
+		if (userPostData.posts_shown < 0) return undefined
 		const response = await pool.query(
 			'SELECT DISTINCT p.post_id, p.user_id, p.user_img_url, p.subject, p.content, p.created_at, p.topic, p.reply_count FROM posts AS p' +
 				' LEFT JOIN replies AS r' +
 				' ON r.user_id = p.user_id' +
 				' WHERE p.user_id = ' +
-				userData.user_id +
+				userPostData.user_id +
 				' OR r.user_id = ' +
-				userData.user_id +
-				' ORDER BY created_at DESC LIMIT 5;'
+				userPostData.user_id +
+				' ORDER BY created_at DESC LIMIT 5 OFFSET ' +
+				userPostData.posts_shown +
+				';'
 		)
 		if (response[0].length !== 0) {
 			const responseData = response[0]
+			return responseData
+		} else {
+			return {}
+		}
+	} catch (err) {
+		throw err
+	}
+}
+
+exports.getSumOfAllDiscussions = async (userData) => {
+	try {
+		const numDiscStarted = await pool.query(
+			'SELECT COUNT(*) AS "sum" from posts WHERE user_id = "' + userData.user_id + '";'
+		)
+
+		const numDiscReplied = await pool.query(
+			'SELECT DISTINCT COUNT(*) AS "sum" from posts' +
+				' LEFT JOIN replies' +
+				' ON posts.post_id = replies.post_id' +
+				' WHERE posts.user_id != "' +
+				userData.user_id +
+				'" AND replies.user_id = "' +
+				userData.user_id +
+				'";'
+		)
+
+		// console.log('1: ' + JSON.stringify(numDiscStarted[0]))
+		// console.log('2: ' + JSON.stringify(numDiscReplied[0]))
+		// console.log('3: ' + JSON.stringify(numDiscReplied[0][0].sum + numDiscStarted[0][0].sum))
+
+		if (numDiscStarted[0].length !== 0 && numDiscReplied[0].length !== 0) {
+			const responseData = numDiscReplied[0][0].sum + numDiscStarted[0][0].sum
 			return responseData
 		} else {
 			return {}

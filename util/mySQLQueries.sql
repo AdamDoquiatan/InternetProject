@@ -70,11 +70,11 @@ SELECT full_name, bio, img_url, country, date_of_birth, post_count, message_coun
 ---------- POST QUERIES ----------
 
 -- Create a post + increment user's post count --
-INSERT INTO posts (user_id, user_img_url, subject, content, topic) VALUES (36, 'testURL', 'test subject', 'test content', 'test topic');
+INSERT INTO posts (user_id, user_img_url, subject, content, topic) VALUES (50, 'testURL', 'test subject', 'test content', 'test topic');
 
 UPDATE users
 SET post_count = post_count + 1
-WHERE user_id = 44;
+WHERE user_id = 50;
 
 -- Get Last five discussions (ones the user has either created or replied to-- 
 SELECT DISTINCT p.post_id, p.user_id, p.user_img_url, p.subject, p.content, p.created_at, p.topic, p.reply_count FROM posts AS p
@@ -82,6 +82,16 @@ LEFT JOIN replies AS r
 ON r.user_id = p.user_id
 WHERE p.user_id = 44 OR r.user_id = 44
 ORDER BY created_at DESC LIMIT 5;
+
+-- Get sum of all discussions started --
+SELECT COUNT(*) AS "sum" from posts
+WHERE user_id = 50;
+
+-- Get sum of all discussions joined on posts --
+SELECT DISTINCT COUNT(*)  from posts
+LEFT JOIN replies
+ON posts.post_id = replies.post_id
+WHERE posts.user_id != 50 AND replies.user_id = 50;
 
 -- Get Queried Posts --
 SELECT * from posts
@@ -100,11 +110,11 @@ SELECT * FROM posts WHERE user_id = 44 ORDER BY created_at DESC;
 ---------- REPLY QUERIES ----------
 
 -- Creates a reply + increments reply count --
-INSERT INTO replies (post_id, user_id, user_img_url, content) VALUES (22, 44, 'test url2', 'test content2');
+INSERT INTO replies (post_id, user_id, user_img_url, content) VALUES (2, 50, 'test url2', 'test content2');
 
 UPDATE posts
 SET reply_count = reply_count + 1
-WHERE post_id = 26;
+WHERE post_id = 2;
 
 
 -- Get all replies for post --
