@@ -1,9 +1,20 @@
-<h1>Signup Page</h1>
-<form class='signupModule' action='/completeRegistration' method='POST'>
-  <h2>Sign up Pt.2</h2>
-  <input class="inp_imgURL" name="imgURL" type="text" maxlength="40" placeholder="imgURL">
-  <input class="inp_bio" name="bio" type="text" maxlength="40" placeholder="bio">
-  <input class="inp_country" name="country" type="text" maxlength="40" placeholder="country">
-  <input class="inp_dateOfBirth" name="dateOfBirth" type="text" maxlength="40" placeholder="date of birth (YYYY-MM-DD)">
-  <input class="btn_completeRegistration" type="submit" value='Complete Registration' />
-</form>
+<img src="./images/riverPhoto.jpg" id="bgImg" />
+<div id="formInfo">
+    <form class='signupModule' action='/completeRegistration' method='POST'>
+        <h2>Sign up Pt.2</h2>
+        <!--The first sec of inputs should be already recorded when user reaches this page-->
+        <input class="inp_firstName" name="firstName" type="text" maxlength="40" placeholder="first name" />
+        <input class="inp_lastName" name="lastName" type="text" maxlength="40" placeholder="last name" /><br />
+        <input class="inp_email_" name="email" type="text" maxlength="99" placeholder="email" />
+        <br />
+        <input class="inp_signupPassword" name="signupPassword" type="password" maxlength="40" placeholder="password" /><br />
+        <input class="inp_confirmPassword" name="confirmPassword" type="password" maxlength="40" placeholder="confirm password" />
+        <br /><br /><br />
+
+        <textarea class="inp_bio" name="bio" type="text" maxlength="40" placeholder="bio" rows="5" cols="50" ></textarea>
+        <input class="inp_imgURL" name="imgURL" type="text" maxlength="40" placeholder="imgURL" ><br />
+        <input class="inp_country" name="country" type="text" maxlength="40" placeholder="country">
+        <input class="inp_dateOfBirth" name="dateOfBirth" type="text" maxlength="40" placeholder="date of birth (YYYY-MM-DD)">
+        <input class="btn_completeRegistration" type="submit" value='Complete Registration' />
+    </form>
+</div>

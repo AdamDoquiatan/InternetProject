@@ -1,13 +1,13 @@
 <h1>Logo</h1><!--TODO redirect to this page-->
-<img src="./images/riverPhoto.jpg" />
+<img src="./images/riverPhoto.jpg" id="bgImg" />
 <div id="formInfo">
     <form class='loginModule' action='/login' method="POST">
         <h2>Login</h2>
-        <input class="inp_email" name="email" type="text" maxlength="40" placeholder="email" />
-        <input class="inp_login_password" name="password" type="password" maxlength="40" placeholder="password" /><br />
+        <input class="inp_email" name="email" type="text" maxlength="40" placeholder="email" required="required" />
+        <input class="inp_login_password" name="password" type="password" maxlength="40" placeholder="password" required="required" /><br />
         <input class="btn_login" name="login" type="submit" value="Login" />
     </form>
-    <br />
+    <br /><!--TODO put required on each-->
     <form class='signupModule' action='/processRegistration' method="POST">
         <h2>Sign up</h2>
         <input class="inp_firstName" name="firstName" type="text" maxlength="40" placeholder="first name" />

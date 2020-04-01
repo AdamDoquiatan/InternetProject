@@ -1,1 +1,65 @@
+body{
+    overflow-x: hidden;
+    font-family: Arial, Calibri, "Times New Roman", serif;
+}
 
+h1{
+    color: red;
+}
+
+#bgImg{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -99;
+}
+
+form{
+    opacity: 1.0;
+}
+
+#formInfo{
+    text-align: center;
+    margin: 2% 30% 0 30%;
+    background-color: white;
+    padding: 10pt;
+    border: solid grey 1pt;
+}
+
+#formInfo h2{
+    text-align: left;
+    margin-left: 12%;
+}
+
+input{
+    border: solid grey 1pt;
+    color: black;
+    padding: 5pt;
+    margin: 5pt 0 5pt 0;
+    background: none;
+}
+
+input::placeholder{
+    color: black;
+}
+
+input[type=submit]{
+    transition: 0.5s;
+    border: solid black 1pt;
+    background-color: red;
+    color: white;
+    padding: 5pt;
+}
+
+input[type=submit]:hover{
+    transition: 0.5s;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+textarea{
+    resize: none;
+}
