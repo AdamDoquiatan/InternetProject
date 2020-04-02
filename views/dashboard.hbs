@@ -1,50 +1,70 @@
-<h1>Dashboard</h1>
-<h2>UserData</h2>
-<p>{{ user_data }}</p>
-<h2>Last 5 Discussions (Posts) Data</h2>
-<p>{{ post_data }}</p>
-<a href="/getPreviousFiveDiscussions">&nbsp;previous</a>&nbsp;&nbsp;
-<a href="/getNextFiveDiscussions">&nbsp;next</a>
-<h2>Temp Links</h2>
-<a href="/editProfilePage">&nbsp;Edit Profile Page</a>
-<a href="/convoPage">&nbsp;Convo Page</a>
-<br>
-<br>
-
-<form class="searchByQuery" action='/querySearchPage' method="GET">
-  <h2>Search By Query</h2>
+<div id="top-container">
+  <div id="logo"><a href="#default"> <h1><span id="highlight">c</span>k</h1></a></div>
+  <div id="search-bar">
+  <form class="searchByQuery" action='/querySearchPage' method="GET">
   <input class="inp_searchBar" name="searchQuery" type="text" maxlength="40" placeholder="Search">
   <input class="btn_searchQuery" type="submit" value="search" />
+  </form>
+  </div>
+  <form name="logout" method="post" action="">
+  <label class="logoutLblPos">
+  <input id="logout-btn" name="logoutbtn" type="submit" id="submit2" value="log out">
+  </label>
 </form>
+</div>
 
-<br>
-<br>
+{{!-- Left Side Display Info --}}
+
+<div id="left-container">
+<h2>Retrieve from database</h2>
+<div id="profile-pic">-----/PROFILE pic here/-----</div>
+<div id="name">-----/NAME GOES HERE/-----</div>
+<div id="bio">-----/BIO goes here/-----</div><br><br><br>
+<a href="/">&nbsp;Posts</a><br>
+<a href="/convoPage">&nbsp;Messages</a><br>
+<a href="/">&nbsp;Likes</a><br><br><br>
+<a href="/editProfilePage">&nbsp;Edit Profile</a><br>
+</div>
+
+{{!-- Right Side Entry + Posts --}}
+
+<div id="right-container">
+<form class='createPostModule' action='/createPost' method="POST">
+  <h2>What's your question today?</h2>
+  <input class="inp_subject" name="subject" type="text" maxlength="40" placeholder="subject"><br>
+  {{!-- <input class="inp_content" name="content" type="text" maxlength="500" placeholder="details"><br> --}}
+  <textarea class="inp_content" name="content" type="text" maxlength="500" placeholder="enter details...." rows="4" cols="50" name="comment"></textarea><br>
+
+  <label for="inp_topic">Topic:</label>
+  <select class="inp_topic" name="topic">
+    <option value="corona">Corona General</option>
+    <option value="cough">Cough</option>
+    <option value="fever">Fever</option>
+    <option value="respiratory">Respiratory</option>
+    <option value="not_corona">Not Corona</option>
+  </select>
+  <input class="btn_post" name="login" type="submit" value="Post to Timeline" />
+ 
 
 <form class='searchByTopic' action='/topicSearchPage' method="GET">
   <h2>Search By Topic</h2>
   <label for="inp_topic">Topic:</label>
   <select class="inp_topic" name="topic">
-    <option value="corona">Corona</option>
+    <option value="corona">Corona General</option>
+    <option value="cough">Cough</option>
+    <option value="fever">Fever</option>
+    <option value="respiratory">Respiratory</option>
     <option value="not_corona">Not Corona</option>
   </select>
   <input class="btn_searchTopic" type="submit" value="search" />
 </form>
 
-<br>
-<br>
-
-<form class='createPostModule' action='/createPost' method="POST">
-  <h2>Create Post</h2>
-  <input class="inp_subject" name="subject" type="text" maxlength="40" placeholder="subject">
-  <input class="inp_content" name="content" type="text" maxlength="500" placeholder="details">
-  <label for="inp_topic">Topic:</label>
-  <select class="inp_topic" name="topic">
-    <option value="corona">Corona</option>
-    <option value="not_corona">Not Corona</option>
-  </select>
-  <input class="btn_post" name="login" type="submit" value="Post to Timeline" />
+  <h2>UserData</h2>
+  <p>{{ user_data }}</p>
+  <h2>Last 5 Discussions (Posts) Data</h2>
+  <p>{{ post_data }}</p>
+  <a href="/getPreviousFiveDiscussions">&nbsp;previous</a>&nbsp;&nbsp;
+  <a href="/getNextFiveDiscussions">&nbsp;next</a>
 </form>
 
-<br>
-<br>
-<a href="/">Logout</a>
+</div>
