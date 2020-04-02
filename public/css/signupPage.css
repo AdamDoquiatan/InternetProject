@@ -3,34 +3,33 @@ body{
     font-family: Arial, Calibri, "Times New Roman", serif;
 }
 
-h1{
-    color: red;
-}
-
-#bgImg{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -99;
+#right-container{
+    float: left;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin: 2em;
+    margin-left: -5em;
 }
 
 form{
     opacity: 1.0;
 }
 
+#left-container{
+    float: left;
+    width: 50%; 
+    margin-left: 4em;
+}
 #formInfo{
-    text-align: center;
-    margin: 2% 30% 0 30%;
-    background-color: white;
-    padding: 10pt;
-    border: solid grey 1pt;
+    display: inline-block; 
+    width: 100%;
+    height: 20em;
 }
 
 #formInfo h2{
     text-align: left;
-    margin-left: 12%;
+    font-size: 40pt;
 }
 
 input{
@@ -63,3 +62,16 @@ input[type=submit]:hover{
 textarea{
     resize: none;
 }
+
+#highlight{
+    color: orangered;
+}
+
+#logo{
+    font-size: large;
+    margin: 3em;
+}
+
+a { color: inherit; 
+    text-decoration:none
+} 

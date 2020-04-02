@@ -1,20 +1,23 @@
-<img src="./images/riverPhoto.jpg" id="bgImg" />
+<head>
+    <div id="logo"><a href="#default"> <h1><span id="highlight">covid19</span>Knowledge</h1></a></div>
+</head>
 <div id="formInfo">
     <form class='signupModule' action='/completeRegistration' method='POST'>
-        <h2>Sign up Pt.2</h2>
+        <div id="left-container"><h2>Let us <br> know a <br> little more <br>about you</h2></div>
         <!--The first sec of inputs should be already recorded when user reaches this page-->
-        <input class="inp_firstName" name="firstName" type="text" maxlength="40" placeholder="first name" />
+        {{!-- <input class="inp_firstName" name="firstName" type="text" maxlength="40" placeholder="first name" />
         <input class="inp_lastName" name="lastName" type="text" maxlength="40" placeholder="last name" /><br />
         <input class="inp_email_" name="email" type="text" maxlength="99" placeholder="email" />
         <br />
         <input class="inp_signupPassword" name="signupPassword" type="password" maxlength="40" placeholder="password" /><br />
-        <input class="inp_confirmPassword" name="confirmPassword" type="password" maxlength="40" placeholder="confirm password" />
-        <br /><br /><br />
-
-        <textarea class="inp_bio" name="bio" type="text" maxlength="40" placeholder="bio" rows="5" cols="50" ></textarea>
+        <input class="inp_confirmPassword" name="confirmPassword" type="password" maxlength="40" placeholder="confirm password" /> --}}
+        {{!-- <br /><br /><br /> --}}
+        <div id="right-container">
         <input class="inp_imgURL" name="imgURL" type="text" maxlength="40" placeholder="imgURL" ><br />
+        <textarea class="inp_bio" name="bio" type="text" maxlength="140" placeholder="a few lines about yourself..." rows="5" cols="50" ></textarea>
         <input class="inp_country" name="country" type="text" maxlength="40" placeholder="country">
         <input class="inp_dateOfBirth" name="dateOfBirth" type="text" maxlength="40" placeholder="date of birth (YYYY-MM-DD)">
         <input class="btn_completeRegistration" type="submit" value='Complete Registration' />
+        </div>
     </form>
 </div>
