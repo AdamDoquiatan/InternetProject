@@ -1,1 +1,82 @@
+body{
+    font-size: 15pt;
+}
+#top-container{
+    background-color: none;
+    height: 10em;
+    width: 100%;
+    text-align: center;
+    margin-bottom: -2em;
+}
+
+
+.btn_searchQuery{
+    font-size: 1em;
+    padding: 0.8em;
+    background-color:orangered;
+}
+
+.inp_searchBar{
+    width: 30em;
+    height: 3em;
+    background-color: whitesmoke;
+}
+
+#logout-btn{
+    font-size: 1em;
+    padding: 0.8em;
+    background-color:orangered;
+    float: left;
+    margin: 2.5em 0em 0em 25em;
+}
+
+#logo{
+    font-size: 20pt;
+    float: left;
+    margin-top: 10pt;
+    margin-left: 1.5em;
+
+}
+
+#search-bar{
+    float: left;
+    margin: 2.5em;
+}
+
+#highlight{
+    color: orangered;
+}
+
+a { color: inherit; 
+    text-decoration:none
+} 
+
+#left-container{
+    float: left;
+    border-style: solid;
+    margin: 0em 18em 0em 5em; 
+}
+
+#right-container{
+    float:left;
+    border-style: none;
+    height: auto;
+}
+
+#bottom-container{
+    margin: 5em;
+}
+
+#info-container{
+    display: flex; 
+    flex-direction: row;
+}
+
+.btn{
+    font-size: 15pt;
+    padding: 0.3em;
+    margin: 10pt;
+    background-color:orangered;
+}
+
 
