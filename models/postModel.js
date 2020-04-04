@@ -53,7 +53,6 @@ exports.getFiveDiscussions = async (userPostData) => {
 		)
 		if (response[0].length !== 0) {
 			const responseData = response[0]
-			console.log(responseData)
 			return responseData
 		} else {
 			return {}
@@ -100,6 +99,20 @@ exports.getAllPostsByUser = async (userData) => {
 		const response = await pool.query(
 			'SELECT * FROM posts WHERE user_id = "' + userData.user_id + '" ORDER BY created_at DESC;'
 		)
+		if (response[0].length !== 0) {
+			const responseData = response[0]
+			return responseData
+		} else {
+			return {}
+		}
+	} catch (err) {
+		throw err
+	}
+}
+
+exports.getPostById = async (postData) => {
+	try {
+		const response = await pool.query('SELECT * FROM posts WHERE post_id = "' + postData.post_id + '";')
 		if (response[0].length !== 0) {
 			const responseData = response[0]
 			return responseData

@@ -61,6 +61,9 @@ app.use('/', sendMessagePageRoutes)
 let topicSearchPageRoutes = require('./routes/topicSearchPageRoutes')
 app.use('/', topicSearchPageRoutes)
 
+let postRepliesPageRoutes = require('./routes/postRepliesPageRoutes')
+app.use('/', postRepliesPageRoutes)
+
 // Points towards location of js and css folders
 app.use(express.static(path.join(__dirname, '/public')))
 

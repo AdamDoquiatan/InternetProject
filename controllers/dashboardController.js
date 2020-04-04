@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const userModel = require('../models/userModel')
 const postModel = require('../models/postModel')
+const replyModel = require('../models/replyModel')
 const bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -17,6 +18,7 @@ exports.renderDashboard = async (req, res) => {
 			user_id: userId,
 			posts_shown: req.session.postsShown
 		})
+
 		res.render('dashboard', {
 			dashboardJSCSS: true,
 			user_data: JSON.stringify(userData),

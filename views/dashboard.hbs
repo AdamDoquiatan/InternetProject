@@ -64,10 +64,12 @@
   <h2>Last 5 Discussions (Posts) Data</h2>
   {{!-- <p>{{ post_data }}</p> --}}
   {{#each post_data}}
-    {{>post this}}
+    {{>post postData=this}}
   {{/each}}
   <a href="/getPreviousFiveDiscussions">&nbsp;previous</a>&nbsp;&nbsp;
   <a href="/getNextFiveDiscussions">&nbsp;next</a>
 </form>
 
 </div>
+
+
