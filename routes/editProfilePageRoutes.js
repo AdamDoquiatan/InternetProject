@@ -4,5 +4,6 @@ const editProfilePageController = require('../controllers/editProfilePageControl
 const is_authenticated = require('../util/is-auth')
 
 router.route('/editProfilePage').get(is_authenticated, editProfilePageController.renderEditProfilePage)
+router.route('/updateProfile').post(editProfilePageController.updateProfile)
 
 module.exports = router
