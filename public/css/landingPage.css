@@ -88,8 +88,7 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
     position: absolute;
     top: 70pt;
     left: -12pt;
-    width: 75%;
-    height: 85%;
+    width: 78.5%;
     margin: 1em;
 }
 
