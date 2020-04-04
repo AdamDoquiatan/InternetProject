@@ -54,7 +54,7 @@ exports.getUserProfile = async(userData) => {
     try {
         console.log(userData)
         const response = await pool.execute(
-            'SELECT user_id, full_name, bio, img_url, country, date_of_birth, post_count, message_count, like_count FROM users WHERE user_id = "' +
+            'SELECT user_id, full_name, bio, img_url, country, DATE(date_of_birth), post_count, message_count, like_count FROM users WHERE user_id = "' +
             userData.user_id +
             '";'
         )
