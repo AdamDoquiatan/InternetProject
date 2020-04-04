@@ -1,3 +1,12 @@
 <h1>Edit Profile Page</h1>
 <h2>UserData</h2>
-<p>{{ user_data }}</p>
+<p>{{ fullName }}</p><br>
+<form action='/updateProfile' method='POST'>
+        <input class="inp_fullName" name="fullName" type="text" maxlength="40" placeholder="full name" value="{{fullName}}">
+        <input class="inp_imgURL" name="imgURL" type="text" maxlength="40" placeholder="imgURL" value="{{imgURL}}"><br />
+        <textarea class="inp_bio" name="bio" type="text" maxlength="140" placeholder="a few lines about yourself..." rows="5" cols="50" >{{bio}}</textarea>
+        <input class="inp_country" name="country" type="text" maxlength="40" placeholder="country" value="{{country}}">
+        <input class="inp_dateOfBirth" name="dateOfBirth" type="text" maxlength="40" placeholder="date of birth (YYYY-MM-DD)" value="{{dateOfBirth}}">
+        <input class="btn_updateProfile" type="submit" value='Update' />
+        </div>
+    </form>
