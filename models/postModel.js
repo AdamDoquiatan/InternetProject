@@ -53,6 +53,7 @@ exports.getFiveDiscussions = async (userPostData) => {
 		)
 		if (response[0].length !== 0) {
 			const responseData = response[0]
+			console.log(responseData)
 			return responseData
 		} else {
 			return {}

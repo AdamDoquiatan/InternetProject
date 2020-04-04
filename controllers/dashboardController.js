@@ -20,7 +20,7 @@ exports.renderDashboard = async (req, res) => {
 		res.render('dashboard', {
 			dashboardJSCSS: true,
 			user_data: JSON.stringify(userData),
-			post_data: JSON.stringify(postData)
+			post_data: postData
 		})
 		//res.send(userData)
 	} catch (err) {
