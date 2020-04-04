@@ -59,9 +59,9 @@ const createUser = async (req, userData) => {
 	const stashedUserData = req.session
 	const fullUserData = joinUserAttributes(stashedUserData, userData)
 	console.log('Full user data: ' + JSON.stringify(fullUserData))
-
 	try {
 		const userId = await saveUserToDB(fullUserData)
+		req.session.userImgUrl = fullUserData.img_url
 		return userId
 	} catch (err) {
 		throw err

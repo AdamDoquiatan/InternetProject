@@ -9,13 +9,16 @@ app.use(bodyParser.json())
 /////// LOGIN ///////
 exports.login = async (req, res) => {
 	try {
-		const userId = await validateLoginCredentials(req)
-		if (userId === undefined) {
+		const userData = await validateLoginCredentials(req)
+		if (userData.user_id === undefined) {
 			console.log('invalid login credentials')
 			return
 		} else {
-			req.session.userId = userId
-			console.log('going to dashboard with userId: ' + userId)
+			req.session.userId = userData.user_id
+			req.session.userImgUrl = userData.img_url
+			console.log(
+				'going to dashboard with userId: ' + req.session.userId + ' and img url: ' + req.session.userImgUrl
+			)
 			res.redirect('/dashboard')
 		}
 	} catch (err) {
@@ -26,8 +29,9 @@ exports.login = async (req, res) => {
 const validateLoginCredentials = async (req) => {
 	try {
 		const userId = await userModel.getUserId(req.body)
-		console.log('user id: ' + userId)
-		return userId
+		const userData = await userModel.getUserProfile({ user_id: userId })
+		console.log('userData: ' + JSON.stringify(userId))
+		return userData
 	} catch (err) {
 		throw err
 	}

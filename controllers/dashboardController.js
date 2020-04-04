@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 const userModel = require('../models/userModel')
 const postModel = require('../models/postModel')
-const replyModel = require('../models/replyModel')
 const bodyParser = require('body-parser')
 
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -50,7 +49,7 @@ const gatherPostData = (req) => {
 	}
 
 	postData['user_id'] = req.session.userId
-	postData['user_img_url'] = req.body.user_img_url
+	postData['user_img_url'] = req.session.userImgUrl
 	postData['subject'] = req.body.subject
 	postData['content'] = req.body.content
 	postData['topic'] = req.body.topic
