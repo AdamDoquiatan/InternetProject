@@ -52,9 +52,10 @@ CREATE TABLE messages (
   created_at DATETIME DEFAULT NOW() NOT NULL
 );
 
-INSERT INTO messages (convo_id, sender_user_id, reciever_user_id, sender_user_img_url, content) VALUES (1, 36, 44, 'testURL', 'testcontent')
+INSERT INTO messages (convo_id, sender_user_id, reciever_user_id, sender_user_img_url, content) 
+  VALUES (1, 36, 44, 'testURL', 'testcontent');
 
----------- USER QUERIES ----------
+-- USER QUERIES --
 
 -- Creates a new user --
 INSERT INTO users (email, password, full_name, bio, img_url, country, date_of_birth)
@@ -67,7 +68,7 @@ SELECT user_id FROM users WHERE email = 'adamdoq@gmail.com' && password = 'passw
 SELECT full_name, bio, img_url, country, date_of_birth, post_count, message_count, like_count FROM users WHERE user_id = 36;
 
 
----------- POST QUERIES ----------
+-- POST QUERIES --
 
 -- Create a post + increment user's post count --
 INSERT INTO posts (user_id, user_img_url, subject, content, topic) VALUES (50, 'testURL', 'test subject', 'test content', 'test topic');
@@ -117,7 +118,7 @@ SELECT * FROM posts WHERE user_id = 44 ORDER BY created_at DESC;
 
 
 
----------- REPLY QUERIES ----------
+-- REPLY QUERIES --
 
 -- Creates a reply + increments reply count --
 INSERT INTO replies (post_id, user_id, user_img_url, content) VALUES (30, 36, 'test url2', 'test content2');
@@ -131,7 +132,7 @@ WHERE post_id = 30;
 SELECT * FROM replies WHERE post_id = 18;
 
 
----------- CONVO AND MESSAGE QUERIES ----------
+-- CONVO AND MESSAGE QUERIES --
 
 -- Creates a convo + create a new message + increments message count for that convo --
 INSERT INTO convos (user1_id, user2_id, user2_img_url) VALUES (36, 44, 'testURL');
