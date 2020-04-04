@@ -1,6 +1,31 @@
 body{
     overflow-x: hidden;
+    overflow-y: hidden;
     font-family: Arial, Calibri, "Times New Roman", serif;
+}
+
+header{
+    position: absolute;
+    top: 0;
+    left: -2pt;
+    width: 100%;
+    height: 80pt;
+    background-color: red;
+    z-index: -2;
+    border: solid black 2pt;
+    box-shadow: 0 7px 6px -6px black;
+}
+
+header span{
+    background-color: #F2F2F2;
+    transform: skew(-25deg);
+    z-index: -1;
+    position: absolute;
+    top: -2pt;
+    left: 70pt;
+    width: 280pt;
+    height: 80pt;
+    border: solid black 2pt;
 }
 
 #topbanner{
@@ -16,20 +41,54 @@ body{
 #logo{
     float: left;
     font-size: large;
+    margin-left: 70pt;
 }
 #highlight{
     color: orangered;
 }
 
-.signupModule{
+input[type=text], input[type=password], input[type=email]{
+    background-color: white;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
+    background-color: #FFE8B5;
+}
+
+#loginModule input[type=text]:focus, #loginModule input[type=password]:focus{
+    background-color: #FFE8B5;
+}
+
+#signupModule{
     color: orangered;
 }
 
 #signUpContainer{
-    margin-left: 2em;
+    position: absolute;
+    top: 75pt;
+    left: 55%;
+    width: 41%;
+    height: 86%;
+    border: solid black 2pt;
+    background-color: #F2F2F2;
+    text-align: center;
+    z-index: -3;
+    padding: 20pt;
 }
+
+#signUpContainer form{
+    text-align: left;
+    position: relative;
+    left: 4%;
+    top: 5%;
+}
+
 #bgImg{
-    width: 100%;
+    z-index: -4;
+    position: absolute;
+    top: 70pt;
+    left: -12pt;
+    width: 78.5%;
     margin: 1em;
 }
 

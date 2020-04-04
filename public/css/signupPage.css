@@ -1,6 +1,47 @@
 body{
     overflow-x: hidden;
     font-family: Arial, Calibri, "Times New Roman", serif;
+    background-color: #F2F2F2;
+}
+
+header{
+    position: absolute;
+    top: 0;
+    left: -2pt;
+    width: 100%;
+    height: 80pt;
+    background-color: red;
+    z-index: -2;
+    border: solid black 2pt;
+    box-shadow: 0 7px 6px -6px black;
+}
+
+header span{
+    background-color: #F2F2F2;
+    transform: skew(-25deg);
+    z-index: -1;
+    position: absolute;
+    top: -2pt;
+    left: 70pt;
+    width: 280pt;
+    height: 80pt;
+    border: solid black 2pt;
+}
+
+input[type=text], textarea{
+    background-color: white;
+}
+
+input[type=text]:focus, textarea:focus{
+    background-color: #FFE8B5;
+}
+
+textarea::placeholder, input::placeholder{
+    font-family: Arial, Calibri, "Times New Roman", serif;
+}
+
+textarea{
+    border: solid grey 1pt;
 }
 
 #right-container{
@@ -18,8 +59,8 @@ form{
 
 #left-container{
     float: left;
-    width: 50%; 
-    margin-left: 4em;
+    width: 50%;
+    margin-left: 10%;
 }
 #formInfo{
     display: inline-block; 
@@ -38,10 +79,6 @@ input{
     padding: 5pt;
     margin: 5pt 0 5pt 0;
     background: none;
-}
-
-input::placeholder{
-    color: black;
 }
 
 input[type=submit]{
@@ -70,6 +107,9 @@ textarea{
 #logo{
     font-size: large;
     margin: 3em;
+    position: relative;
+    left: 41.5pt;
+    bottom: 10.5pt;
 }
 
 a { color: inherit; 

@@ -1,8 +1,11 @@
 {{!-- Logo + Log In Area --}}
+<header><span></span></header><!--background for topbanner-->
 <div id="topbanner">
+    <span></span>
+    <div id="topbannerbg" style="background-color: black"></div>
     <div id="logo"><a href="#default"> <h1><span id="highlight">covid19</span>Knowledge</h1></a></div>
     <div id="header-right">
-     <form class='loginModule' action='/login' method="POST">
+     <form id='loginModule' action='/login' method="POST">
         <input class="inp_email" name="email" type="text" maxlength="40" placeholder="email" required="required" />
         <input class="inp_login_password" name="password" type="password" maxlength="40" placeholder="password" required="required" />
         <input class="btn_login" name="login" type="submit" value="Login" />
@@ -12,19 +15,17 @@
 
 {{!-- Picture + Slogan + Sign Up info --}}
 <div id="formInfo">
-    <div id="img-holder">
-        <img src="./images/sickppl.jpg" id="bgImg" />
-    </div>
+    <img src="./images/sickppl.jpg" id="bgImg" />
     <div id="signUpContainer">
-    <form class='signupModule' action='/processRegistration' method="POST">
-        <h2 id="slogan"><strong>Join the world's largest community for sick people to complain</strong></strong></h2>
-        <input class="inp_firstName" name="firstName" type="text" maxlength="40" placeholder="first name" />
-        <input class="inp_lastName" name="lastName" type="text" maxlength="40" placeholder="last name" /><br />
-        <input class="inp_email_" name="email" type="text" maxlength="99" placeholder="email" />
-        <br />
-        <input class="inp_signupPassword" name="signupPassword" type="password" maxlength="40" placeholder="password" /><br />
-        <input class="inp_confirmPassword" name="confirmPassword" type="password" maxlength="40" placeholder="confirm password" /><br />
-        <input class="btn_signup" name="signup" type="submit" value="Sign Up" style="width:57%" />
-    </form>
+        <form class='signupModule' action='/processRegistration' method="POST">
+            <h2 id="slogan"><strong>Join the world's largest community for sick people to complain</strong></strong></h2>
+            <input class="inp_firstName" name="firstName" type="text" maxlength="40" placeholder="first name" />
+            <input class="inp_lastName" name="lastName" type="text" maxlength="40" placeholder="last name" /><br />
+            <input class="inp_email_" name="email" type="text" maxlength="99" placeholder="email" />
+            <br />
+            <input class="inp_signupPassword" name="signupPassword" type="password" maxlength="40" placeholder="password" /><br />
+            <input class="inp_confirmPassword" name="confirmPassword" type="password" maxlength="40" placeholder="confirm password" /><br />
+            <input class="btn_signup" name="signup" type="submit" value="Sign Up" style="width:57%" />
+        </form>
     </div>
 </div>
