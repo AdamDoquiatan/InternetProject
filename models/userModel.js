@@ -69,21 +69,24 @@ exports.getUserProfile = async(userData) => {
     }
 }
 
+/**
+ * Expects JSON data with new user info and updates the SQL database.
+ */
 exports.updateUserProfile = async(userData) => {
     try {
+        //Test to verify received data.
         console.log(JSON.stringify(userData))
-            //Create SQL script to edit user details in the DB
+            //Create SQL script to edit user details in the DB.
         const sql =
             'UPDATE users SET ' +
-            'full_name = "' + userData.full_name + '"' +
-            'img_url = "' + userData.img_url + '"' +
-            'country = "' + userData.country + '"' +
-            'date_of_birth = "' + userData.date_of_birth + '"' +
+            'full_name = "' + userData.full_name + '",' +
+            'img_url = "' + userData.img_url + '",' +
+            'country = "' + userData.country + '",' +
+            'date_of_birth = "' + userData.date_of_birth + '",' +
             'bio = "' + userData.bio + '"' +
             'WHERE user_id = "' + userData.user_id + '";'
-
         await pool.execute(sql)
-        return
+        return true
     } catch (err) {
         throw err
     }
