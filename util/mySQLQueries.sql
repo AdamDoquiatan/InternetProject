@@ -34,11 +34,13 @@ CREATE TABLE replies (
   created_at DATETIME DEFAULT NOW() NOT NULL
 );
 
+-- You added the subject column --
 CREATE TABLE convos (
   convo_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user1_id INT NOT NULL,
   user2_id INT NOT NULL,
   user2_img_url VARCHAR(2083) NOT NULL,
+  subject VARCHAR(99) NOT NULL,
   updated_at DATETIME DEFAULT NOW() NOT NULL
 );
 
@@ -135,15 +137,15 @@ SELECT * FROM replies WHERE post_id = 18;
 -- CONVO AND MESSAGE QUERIES --
 
 -- Creates a convo + create a new message + increments message count for that convo --
-INSERT INTO convos (user1_id, user2_id, user2_img_url) VALUES (36, 44, 'testURL');
-INSERT INTO messages (convo_id, sender_user_id, reciever_user_id, sender_user_img_url, content) VALUES (1, 36, 44, 'testURL', 'testcontent');
+INSERT INTO convos (user1_id, user2_id, user2_img_url, subject) VALUES (36, 56, 'testURL', 'testSubject');
+INSERT INTO messages (convo_id, sender_user_id, reciever_user_id, sender_user_img_url, content) VALUES (3, 36, 56, 'testURL', 'testcontent');
 
 UPDATE users
 SET message_count = message_count + 1
-WHERE user_id = 44;
+WHERE user_id = 56;
 
 -- Gets all user's convos --
-SELECT * FROM convos WHERE user1_id = 36 OR user2_id = 36;
+SELECT * FROM convos WHERE user1_id = 36 OR user2_id = 36 ORDER BY updated_at DESC;
 
 -- Gets all messages in a convo --
 SELECT * FROM messages WHERE convo_id = 1;

@@ -16,8 +16,6 @@ exports.renderDashboard = async (req, res) => {
 			posts_shown: req.session.postsShown
 		})
 
-		console.log(JSON.stringify(userData))
-
 		res.render('dashboard', {
 			dashboardJSCSS: true,
 			user_data: userData,

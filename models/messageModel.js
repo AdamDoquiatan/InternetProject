@@ -28,10 +28,12 @@ exports.createMessage = async (convoData) => {
 }
 
 exports.getAllConvoMessages = async (convoData) => {
+	console.log('convodata: ' + JSON.stringify(convoData))
 	try {
 		const response = await pool.query('SELECT * FROM messages WHERE convo_id = "' + convoData.convo_id + '";')
 		if (response[0].length !== 0) {
 			const responseData = response[0]
+			console.log('convo: ' + convoData.convo_id)
 			return responseData
 		} else {
 			return {}

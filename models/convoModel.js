@@ -18,7 +18,11 @@ exports.createConvo = async (userData) => {
 exports.getAllUsersConvos = async (userData) => {
 	try {
 		const response = await pool.query(
-			'SELECT * FROM convos WHERE user1_id = "' + userData.user_id + '" OR user2_id ="' + userData.user_id + '";'
+			'SELECT * FROM convos WHERE user1_id = "' +
+				userData.user_id +
+				'" OR user2_id ="' +
+				userData.user_id +
+				'" ORDER BY updated_at DESC;'
 		)
 		if (response[0].length !== 0) {
 			const responseData = response[0]

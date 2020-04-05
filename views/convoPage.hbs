@@ -1,5 +1,6 @@
 <h1>Convo Page</h1>
-<h2>ConvoData </h2>
-<p>{{ convo_data }}</p>
-<h2>First Convo Message Data</h2>
+{{#each convo_data}}
+  {{>convo this}}
+{{/each}}
+<h2>Convo Messages (latest convo's messages rendered by default)</h2>
 <p>{{ message_data }}</p>
