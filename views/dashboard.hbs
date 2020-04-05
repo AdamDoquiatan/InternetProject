@@ -18,13 +18,17 @@
 <div id="left-container">
 <h2>Retrieve from database</h2>
   <h2>UserData</h2>
-  <p>{{ user_data }}</p>
-<div id="profile-pic">-----/PROFILE pic here/-----</div>
-<div id="name">-----/NAME GOES HERE/-----</div>
-<div id="bio">-----/BIO goes here/-----</div><br><br><br>
-<a href="/">&nbsp;Posts</a><br>
-<a href="/convoPage">&nbsp;Messages</a><br>
-<a href="/">&nbsp;Likes</a><br><br><br>
+<div id="profile-pic">
+  <form action='/profilePage' method="GET">
+    <input type="hidden" name="userId" value="{{user_data.user_id}}" />
+    <input type="image" src="{{user_data.img_url}}" class="userImg" alt="(userImage)">
+  </form>
+</div>
+<div id="name">{{user_data.full_name}}</div>
+<div id="bio">{{user_data.bio}}</div><br><br><br>
+<a href="/profilePage?userId={{user_data.user_id}}">&nbsp;Posts {{user_data.post_count}}</a><br>
+<a href="/convoPage">&nbsp;Messages {{user_data.message_count}}</a></br>
+<a>&nbsp;Likes {{user_data.like_count}}</a><br><br><br>
 <a href="/editProfilePage">&nbsp;Edit Profile</a><br>
 </div>
 
