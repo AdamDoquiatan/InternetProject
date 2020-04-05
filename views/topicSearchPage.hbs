@@ -1,3 +1,5 @@
 <h1>Topic Search Page</h1>
 <h2>PostsData </h2>
-<p>{{ post_data }}</p>
+  {{#each post_data}}
+  {{>post this}}
+  {{/each}}
