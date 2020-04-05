@@ -14,9 +14,15 @@
 </div>
 
 <h1>Query Search Page</h1>
-<h2>PostsData Placeholders Made </h2>
+{{#each post_data}}
+{{>post this}}
+{{/each}}
 
-<p>{{post_data}}</p>
+
+
+
+
+<h2>PostsData Placeholders Made </h2>
 
  <div class="container">
         {{!-- {{#each people}} --}}
@@ -54,4 +60,3 @@
         replies show here
         {{!-- {{/each}} --}}
     </div>
-<p>{{ post_data }}</p>
