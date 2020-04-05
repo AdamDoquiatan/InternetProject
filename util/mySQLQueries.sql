@@ -49,6 +49,7 @@ CREATE TABLE messages (
   convo_id INT NOT NULL,
   sender_user_id INT NOT NULL,
   reciever_user_id INT NOT NULL,
+  sender_full_name VARCHAR(99) NOT NULL,
   sender_user_img_url VARCHAR(2083) NOT NULL,
   content TEXT NOT NULL,
   created_at DATETIME DEFAULT NOW() NOT NULL
@@ -138,7 +139,14 @@ SELECT * FROM replies WHERE post_id = 18;
 
 -- Creates a convo + create a new message + increments message count for that convo --
 INSERT INTO convos (user1_id, user2_id, user2_img_url, subject) VALUES (36, 56, 'testURL', 'testSubject');
-INSERT INTO messages (convo_id, sender_user_id, reciever_user_id, sender_user_img_url, content) VALUES (3, 36, 56, 'testURL', 'testcontent');
+INSERT INTO messages (convo_id, sender_user_id, reciever_user_id, sender_full_name, sender_user_img_url, content) VALUES (3, 36, 56, 'Fake McFakey', 'testURL', 'testcontent');
+
+UPDATE users
+SET message_count = message_count + 1
+WHERE user_id = 56;
+
+-- Creates a new message --
+INSERT INTO messages (convo_id, sender_user_id, reciever_user_id, sender_full_name, sender_user_img_url, content) VALUES (3, 36, 56, 'Fakey McFake', 'testURL', 'testcontent');
 
 UPDATE users
 SET message_count = message_count + 1

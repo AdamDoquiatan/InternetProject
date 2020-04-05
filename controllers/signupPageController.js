@@ -20,6 +20,7 @@ exports.completeRegistration = async (req, res) => {
 	try {
 		const userId = await createUser(req, userData)
 		req.session.userId = userId
+
 		console.log('going to dashboard with userId: ' + userId)
 		res.redirect('/dashboard')
 	} catch (err) {
@@ -62,6 +63,7 @@ const createUser = async (req, userData) => {
 	try {
 		const userId = await saveUserToDB(fullUserData)
 		req.session.userImgUrl = fullUserData.img_url
+		req.session.fullName = fullUserData.full_name
 		return userId
 	} catch (err) {
 		throw err

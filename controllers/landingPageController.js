@@ -15,6 +15,7 @@ exports.login = async (req, res) => {
 			return
 		} else {
 			req.session.userId = userData.user_id
+			req.session.fullName = userData.full_name
 			req.session.userImgUrl = userData.img_url
 			console.log(
 				'going to dashboard with userId: ' + req.session.userId + ' and img url: ' + req.session.userImgUrl
