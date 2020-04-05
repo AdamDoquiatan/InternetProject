@@ -1,1 +1,6 @@
 <h1>Rendering Reply</h1>
+<form action='/profilePage' method="GET">
+  <input type="hidden" name="userId" value="{{this.user_id}}" />
+  <input type="image" src="{{this.user_img_url}}" class="userImg" alt="(userImage)">
+</form>
+<p>{{this.content}}</p>

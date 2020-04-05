@@ -14,6 +14,28 @@ exports.getAllPostReplies = async (postData) => {
 	}
 }
 
+exports.createReply = async (replyData) => {
+	try {
+		let sql =
+			'INSERT INTO replies (post_id, user_id, user_img_url, content) VALUES ("' +
+			replyData.post_id +
+			'","' +
+			replyData.user_id +
+			'","' +
+			replyData.user_img_url +
+			'","' +
+			replyData.content +
+			'");'
+		await pool.execute(sql)
+
+		sql = 'UPDATE posts SET reply_count = reply_count + 1 WHERE post_id = "' + replyData.post_id + '";'
+		await pool.execute(sql)
+		return
+	} catch (err) {
+		throw err
+	}
+}
+
 // SQL Query Template
 exports.__nameHere__ = async (userData) => {
 	try {

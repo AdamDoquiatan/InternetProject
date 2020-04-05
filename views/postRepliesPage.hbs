@@ -1,5 +1,12 @@
 <h1>Post Replies Page</h1>
-<h2>Single Post Data</h2>
-<p>{{ post_data }}</p>
-<h2>Post Reply Data</h2>
-<p>{{ reply_data }}</p>
+{{#each post_data}}
+  {{>postOpen this}}
+{{/each}}
+{{#each reply_data}}
+  {{>reply this}}
+{{/each}}
+<form class="createReplyModule" action='/createReply' method="POST">
+  <input type="hidden" name="postId" value="{{post_id}}" />
+  <input class="inp_content" name="content" type="text" maxlength="500" placeholder="add your reply..."><br>
+  <input class="btn_reply" name="comment" type="submit" value="Comment" />
+</form>

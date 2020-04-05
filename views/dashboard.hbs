@@ -1,14 +1,14 @@
 <div id="top-container">
-  <div id="logo"><a href="#default"> <h1><span id="highlight">c</span>k</h1></a></div>
+  <div id="logo"><a href='/dashboard'> <h1><span id="highlight">c</span>k</h1></a></div>
   <div id="search-bar">
   <form class="searchByQuery" action='/querySearchPage' method="GET">
   <input class="inp_searchBar" name="searchQuery" type="text" maxlength="40" placeholder="Search">
   <input class="btn_searchQuery" type="submit" value="search" />
   </form>
   </div>
-  <form name="logout" method="post" action="">
+  <form name="logout" method="get" action="/">
   <label class="logoutLblPos">
-  <input id="logout-btn" name="logoutbtn" type="submit" id="submit2" value="log out">
+  <input id="logout-btn" name="logoutbtn" type="submit" id="submit2">
   </label>
 </form>
 </div>
@@ -62,10 +62,10 @@
 </form>
 
   <h2>Last 5 Discussions (Posts) Data</h2>
-  {{!-- <p>{{ post_data }}</p> --}}
   {{#each post_data}}
-    {{>post postData=this}}
+    {{>post this}}
   {{/each}}
+
   <a href="/getPreviousFiveDiscussions">&nbsp;previous</a>&nbsp;&nbsp;
   <a href="/getNextFiveDiscussions">&nbsp;next</a>
 </form>
