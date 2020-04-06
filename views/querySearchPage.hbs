@@ -1,14 +1,19 @@
+<header><span></span></header><!--background for topbanner-->
 <div id="top-container">
   <div id="logo"><a href="#default"> <h1><span id="highlight">c</span>k</h1></a></div>
   <div id="search-bar">
   <form class="searchByQuery" action='/querySearchPage' method="GET">
   <input class="inp_searchBar" name="searchQuery" type="text" maxlength="40" placeholder="Search">
-  <input class="btn_searchQuery" type="submit" value="search" />
+      <button class="btn_searchQuery" type="submit" value="Search">
+          <img src="./images/searchIcon.png" alt="Search" />
+      </button>
   </form>
   </div>
   <form name="logout" method="post" action="">
   <label class="logoutLblPos">
-  <input id="logout-btn" name="logoutbtn" type="submit" id="submit2" value="log out">
+      <button class="logout-btn" name="logoutbtn" type="submit" value="Logout">
+          <img src="images/logoutIcon.png" alt="Log Out" />
+      </button>
   </label>
 </form>
 </div>
