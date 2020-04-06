@@ -1,105 +1,60 @@
+<header><span></span></header><!--background for topbanner-->
 <div id="top-container">
-  <div id="logo"><a href="#default"> <h1><span id="highlight">c</span>k</h1></a></div>
+  <div id="logo"><a href='/dashboard'> <h1><span id="highlight">c</span>k</h1></a></div>
   <div id="search-bar">
   <form class="searchByQuery" action='/querySearchPage' method="GET">
   <input class="inp_searchBar" name="searchQuery" type="text" maxlength="40" placeholder="Search">
-  <input class="btn_searchQuery" type="submit" value="search" />
+      <button class="btn_searchQuery" type="submit" value="Search">
+          <img src="./images/searchIcon.png" alt="Search" />
+      </button>
   </form>
   </div>
-  <form name="logout" method="post" action="">
+  <form name="logout" method="get" action="/">
   <label class="logoutLblPos">
-  <input id="logout-btn" name="logoutbtn" type="submit" id="submit2" value="log out">
+      <button class="logout-btn" name="logoutbtn" type="submit" value="Logout">
+          <img src="images/logoutIcon.png" alt="Log Out" />
+      </button>
   </label>
 </form>
 </div>
 
-{{!-- Person Info Container --}}
-<div id="info-container">
-  <div id="left-container">
-      <p>{{ user_data }}</p>
 
-        <div class="row">
-            <div id="profile-pic-div">
-                <image src="{{imgdata}}" id="profile-img" alt="profile pic">
-            </div>
-        </div>
-         <div class="row">
-            <div id="name-div">
-                //name here//
-                <p>{{name}}</p>
-                <!--get data from database-->
-            </div>
-        </div>
-        <div class="row">
-            <div id="role-div">
-                //career info//
-                <p>{{description}}</p>
-                <!-- get data from database-->
-            </div>
-        </div>
-        <div class="row">
-            <div id="location-div">
-                //country//
-                <p>{{people.country}}</p>
-                <!--get data from database-->
-            </div>
-        </div>
-    </div>
+{{!-- Left Side Display Info --}}
 
-    <div id="right-container">
-        <div id="button-div">
-            <form action="/like/{{id}}" method="POST">
-            <button type="button" class="btn">Message</button>
-            <button  class="btn" type="submit">Like</button>
-            </form>
-        </div>
-        <div id="likes-div">
-            <p>Likes</p>
-            <!--get/post data from/to database-->
-            <p id="likescount">{{likesnumber}}</p>
-        </div>
-        <div id="person-likes-div">
-            <p>Posts</p>
-            <p id="postcount">{{postcount}}</p>
-            <!--get data from database-->
-        </div>
-    </div>
+<div id="left-container">
+<h2>Retrieve from database</h2>
+  <h2>UserData</h2>
+<div id="profile-pic">
+  <form action='/profilePage' method="GET">
+    <input type="hidden" name="userId" value="{{user_data.user_id}}" />
+    <input type="image" src="{{user_data.img_url}}" class="userImg" alt="(userImage)">
+  </form>
+</div>
+<div id="name">{{user_data.full_name}}</div>
+<div id="bio">{{user_data.bio}}</div><br><br><br>
+<a href="/editProfilePage">&nbsp;Edit Profile</a><br>
 </div>
 
-    {{!-- All Posts Container --}}
+{{!-- Right Container for message and like button --}}
+<div id="right-container">
+    <div id="button-div">
+        <form action="/like/{{id}}" method="POST">
+        <button type="button" class="btn">Message</button>
+        <button  class="btn" type="submit">Like</button>
+        </form>
+    <a href="/profilePage?userId={{user_data.user_id}}">&nbsp;Posts {{user_data.post_count}}</a><br>
+    <a>&nbsp;Likes {{user_data.like_count}}</a><br><br><br>
+     </div>
+</div>
 
-    <div id="bottom-container">
-        <h2>All Posts By {{name}} </h2>
-        <p>{{ post_data }}</p>
-        <div id="img-div">
-            <img class="img" id="post-profile-img" src = "{{img_url}}"/>
-            //img//
-        </div>
-         <div id="single-post">
-            <div class="row" id="post-title">
-                <div id="post-title">
-                    //title//
-                    <p id="post-title">{{title}}</p>
-                </div>
-                <div id="topic">
-                    //topic//
-                    <p id="post-topic">{{topic}}</p>
-                </div>
-            </div>
-            <div id="post-content">
-                <div class="col">
-                    //content//
-                    <p id="post-content">{{topic_desc}}</p>
-                </div>
-            </div>
-            <div id="date-div">
-                <div class="col">
-                    //date//
-                    <p id="post-date">{{date}}</p>
-                </div>
-            </div>
-        </div>
-    </div>
+{{!-- All Posts Container --}}
 
-{{!-- <h1>Profile Page</h1>
-<h2>UserData</h2> --}}
+<div id="bottom-container">
+    <h2>All Posts By {{user_data.full_name}} </h2>
+    {{!-- <p>{{ post_data }}</p> --}}
+    <div class="feedContainer">
+        {{#each post_data}}
+            {{>post this}}
+        {{/each}}
+        </div>
+</div>
