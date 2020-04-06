@@ -1,32 +1,116 @@
 body {
 	font-size: 15pt;
+	overflow-x: hidden;
 }
+
+textarea{
+	resize: none;
+}
+
+header{
+	position: absolute;
+	top: 0;
+	left: -2pt;
+	width: 100%;
+	height: 80pt;
+	background-color: red;
+	z-index: -2;
+	border: solid black 2pt;
+	box-shadow: 0 7px 6px -6px black;
+}
+
+header span{
+	background-color: #F2F2F2;
+	transform: skew(-25deg);
+	z-index: -1;
+	position: absolute;
+	top: -2pt;
+	left: 70pt;
+	width: 100pt;
+	height: 80pt;
+	border: solid black 2pt;
+}
+
 #top-container {
-	background-color: none;
+	background: none;
 	height: 10em;
 	width: 100%;
 	text-align: center;
 	margin-bottom: -2em;
+
+	position: relative;
+	left: 62pt;
+	bottom: 22pt;
 }
 
-.btn_searchQuery {
+#search-bar {
+	float: left;
+	margin: 2.5em;
+	position: absolute;
+	left: 15%;
+}
+
+.btn_searchQuery, .logout-btn{
+	transition: 0.5s;
 	font-size: 1em;
 	padding: 0.8em;
 	background-color: orangered;
+	background-image: linear-gradient(to bottom right, orange, red);
+	width: 50pt;
+	height: 33.5pt;
+	border: solid black 1pt;
+	border-radius: 0 10pt 10pt 0;
+	box-shadow: 0 7px 6px -6px black;
+
+	position: absolute;
+	top: 5pt;
+}
+
+.btn_searchQuery {
+	left: 262pt;
+}
+
+.logout-btn{
+	right: 100pt;
+	top: 42.5pt;
+	border-radius: 10pt;
+}
+
+.btn_searchQuery img, .logout-btn img{
+	transition: 0.5s;
+	width: 25pt;
+	position: relative;
+	bottom: 8pt;
+}
+
+/* When the search button gets hovered, both background and img background change */
+.btn_searchQuery:hover, .btn_searchQuery:hover .btn_searchQuery img,
+	.logout-btn:hover, .logout_btn:hover .logout_btn img{
+	transition: 0.5s;
+	background: none;
+	background-color: white;
+	cursor: pointer;
 }
 
 .inp_searchBar {
 	width: 30em;
 	height: 3em;
-	background-color: whitesmoke;
+	position: absolute;
+	top: 5pt;
+
+	background: none;
+	border-radius: 10pt;
+	border: solid 1pt black;
+	padding-left: 10pt;
 }
 
-#logout-btn {
-	font-size: 1em;
-	padding: 0.8em;
-	background-color: orangered;
-	float: left;
-	margin: 2.5em 0em 0em 25em;
+.inp_searchBar:hover, .inp_searchBar:active, .inp_searchBar:focus{
+	background-color: white;
+	transition: 0.5s;
+}
+
+.inp_searchBar::placeholder{
+	color: black;
 }
 
 #logo {
@@ -36,9 +120,24 @@ body {
 	margin-left: 1.5em;
 }
 
-#search-bar {
-	float: left;
-	margin: 2.5em;
+.createPostModule{
+	border: solid 1pt grey;
+	border-radius: 10pt;
+	width: 75%;
+	padding: 15pt;
+	box-shadow: 6px 7px 6px -6px black;
+	text-align: center;
+	background-color: white;
+}
+
+.createPostModule input, .createPostModule textarea{
+	width: 90%;
+	text-align: center;
+}
+
+.createPostModule > div{
+	text-align: left;
+	padding-left: 20pt;
 }
 
 #highlight {
@@ -53,13 +152,22 @@ a {
 #left-container {
 	float: left;
 	border-style: none;
-	margin: 0em 10em 0em 5em;
+	margin: 0 10em 0 5em;
+	width: 40%;
 }
 
 #right-container {
-	float: left;
-	border-style: none;
+	z-index: -4;
+	border-left: solid black 1pt;
+	margin-top: -50pt;
+	padding: 50pt 0 0 50pt;
 	height: auto;
+	width: 60%;
+	background-color: #F2F2F2;
+
+	position: absolute;
+	top: 126pt;
+	left: 40%;
 }
 
 .inp_subject {

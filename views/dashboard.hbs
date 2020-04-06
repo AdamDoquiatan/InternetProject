@@ -1,14 +1,19 @@
+<header><span></span></header><!--background for topbanner-->
 <div id="top-container">
   <div id="logo"><a href='/dashboard'> <h1><span id="highlight">c</span>k</h1></a></div>
   <div id="search-bar">
   <form class="searchByQuery" action='/querySearchPage' method="GET">
   <input class="inp_searchBar" name="searchQuery" type="text" maxlength="40" placeholder="Search">
-  <input class="btn_searchQuery" type="submit" value="search" />
+      <button class="btn_searchQuery" type="submit" value="Search">
+          <img src="./images/searchIcon.png" alt="Search" />
+      </button>
   </form>
   </div>
   <form name="logout" method="get" action="/">
   <label class="logoutLblPos">
-  <input id="logout-btn" name="logoutbtn" type="submit" id="submit2" value="Logout">
+      <button class="logout-btn" name="logoutbtn" type="submit" value="Logout">
+          <img src="images/logoutIcon.png" alt="Log Out" />
+      </button>
   </label>
 </form>
 </div>
@@ -36,19 +41,21 @@
 
 <div id="right-container">
 <form class='createPostModule' action='/createPost' method="POST">
+   <div>
+       <label for="inp_topic">Health Category:</label>
+       <select class="inp_topic" name="topic">
+           <option value="corona">Corona General</option>
+           <option value="cough">Cough</option>
+           <option value="fever">Fever</option>
+           <option value="respiratory">Respiratory</option>
+           <option value="not_corona">Not Corona</option>
+       </select>
   <h2>What's your question today?</h2>
+   </div>
+
   <input class="inp_subject" name="subject" type="text" maxlength="40" placeholder="subject"><br>
   {{!-- <input class="inp_content" name="content" type="text" maxlength="500" placeholder="details"><br> --}}
-  <textarea class="inp_content" name="content" type="text" maxlength="500" placeholder="enter details...." rows="4" cols="50" name="comment"></textarea><br>
-
-  <label for="inp_topic">Topic:</label>
-  <select class="inp_topic" name="topic">
-    <option value="corona">Corona General</option>
-    <option value="cough">Cough</option>
-    <option value="fever">Fever</option>
-    <option value="respiratory">Respiratory</option>
-    <option value="not_corona">Not Corona</option>
-  </select>
+  <textarea class="inp_content" name="content" type="text" maxlength="500" placeholder="enter details...." rows="4" cols="50" name="comment"></textarea><br />
   <input class="btn_post" name="post" type="submit" value="Post to Timeline" />
 </form>
 
