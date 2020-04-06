@@ -40,7 +40,7 @@
 {{!-- Right Side Entry + Posts --}}
 
 <div id="right-container">
-<form class='createPostModule' action='/createPost' method="POST">
+<form class='feedContainer createPostModule' action='/createPost' method="POST">
    <div>
        <label for="inp_topic">Health Category:</label>
        <select class="inp_topic" name="topic">
@@ -56,29 +56,34 @@
   <input class="inp_subject" name="subject" type="text" maxlength="40" placeholder="subject"><br>
   {{!-- <input class="inp_content" name="content" type="text" maxlength="500" placeholder="details"><br> --}}
   <textarea class="inp_content" name="content" type="text" maxlength="500" placeholder="enter details...." rows="4" cols="50" name="comment"></textarea><br />
-  <input class="btn_post" name="post" type="submit" value="Post to Timeline" />
+    <button class="btn_post" name="post" type="submit" value="Post to Timeline">
+        <img src="images/pencilIcon.png" alt="Submit Post" />
+    </button>
 </form>
 
-<form class='searchByTopic' action='/topicSearchPage' method="GET">
+<form class='feedContainer searchByTopic' action='/topicSearchPage' method="GET">
   <h2>Search By Topic</h2>
-  <label for="inp_topic">Topic:</label>
   <select class="inp_topic" name="topic">
     <option value="corona">Corona General</option>
     <option value="cough">Cough</option>
     <option value="fever">Fever</option>
     <option value="respiratory">Respiratory</option>
     <option value="not_corona">Not Corona</option>
-  </select>
-  <input class="btn_searchTopic" type="submit" value="search" />
+  </select><br />
+    <button class="btn_searchTopic" type="submit" value="search">
+        <img src="./images/searchIcon.png" alt="Search" />
+    </button>
 </form>
 
+<div class="feedContainer">
   <h2>Last 5 Discussions (Posts) Data</h2>
   {{#each post_data}}
-    {{>post this}}
+      {{>post this}}
   {{/each}}
 
-  <a href="/getPreviousFiveDiscussions">&nbsp;previous</a>&nbsp;&nbsp;
-  <a href="/getNextFiveDiscussions">&nbsp;next</a>
+  <a href="/getPreviousFiveDiscussions" id="leftArrow"><</a>&nbsp;&nbsp;
+  <a href="/getNextFiveDiscussions" id="rightArrow">></a>
+</div>
 
 
 </div>

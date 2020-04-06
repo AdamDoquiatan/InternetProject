@@ -1,4 +1,5 @@
 body {
+	font-family: arial, calibri, serif;
 	font-size: 15pt;
 	overflow-x: hidden;
 }
@@ -50,7 +51,7 @@ header span{
 	left: 15%;
 }
 
-.btn_searchQuery, .logout-btn{
+.btn_searchQuery, .logout-btn, .btn_post, .btn_searchTopic{
 	transition: 0.5s;
 	font-size: 1em;
 	padding: 0.8em;
@@ -61,7 +62,9 @@ header span{
 	border: solid black 1pt;
 	border-radius: 0 10pt 10pt 0;
 	box-shadow: 0 7px 6px -6px black;
+}
 
+.btn_searchQuery, .logout-btn{
 	position: absolute;
 	top: 5pt;
 }
@@ -83,9 +86,20 @@ header span{
 	bottom: 8pt;
 }
 
+.btn_searchTopic{
+	border-radius: 10pt;
+}
+
+.btn_searchTopic img{
+	transition: 0.5s;
+	width: 25pt;
+}
+
 /* When the search button gets hovered, both background and img background change */
 .btn_searchQuery:hover, .btn_searchQuery:hover .btn_searchQuery img,
-	.logout-btn:hover, .logout_btn:hover .logout_btn img{
+	.logout-btn:hover, .logout_btn:hover .logout_btn img,
+	.btn_post:hover, .btn_post:hover .btn_post img,
+	.btn_searchTopic:hover, .btn_searchTopic:hover .btn_searchTopic img{
 	transition: 0.5s;
 	background: none;
 	background-color: white;
@@ -102,6 +116,7 @@ header span{
 	border-radius: 10pt;
 	border: solid 1pt black;
 	padding-left: 10pt;
+	box-shadow: 0 7px 6px -6px black;
 }
 
 .inp_searchBar:hover, .inp_searchBar:active, .inp_searchBar:focus{
@@ -120,7 +135,7 @@ header span{
 	margin-left: 1.5em;
 }
 
-.createPostModule{
+.feedContainer{
 	border: solid 1pt grey;
 	border-radius: 10pt;
 	width: 75%;
@@ -128,11 +143,21 @@ header span{
 	box-shadow: 6px 7px 6px -6px black;
 	text-align: center;
 	background-color: white;
+	margin-bottom: 15pt;
 }
 
-.createPostModule input, .createPostModule textarea{
+.feedContainer input, .feedContainer textarea{
 	width: 90%;
 	text-align: center;
+}
+
+.feedContainer textarea{
+	overflow-y: scroll;
+	height: 100pt;
+}
+
+.feedContainer label, .feedContainer h2{
+	font-family: Arial, Calibri, serif;
 }
 
 .createPostModule > div{
@@ -196,6 +221,13 @@ a {
 	padding: 0.3em;
 	margin: 10pt;
 	background-color: orangered;
+	border-radius: 10pt;
+}
+
+.btn_post img{
+	width: 35pt;
+	position: relative;
+	bottom: 3pt;
 }
 
 .btn_searchTopic {
@@ -211,4 +243,14 @@ label {
 
 .userImg {
 	max-width: 5rem;
+}
+
+#leftArrow{
+	position: relative;
+	right: 15%;
+}
+
+#rightArrow{
+	position: relative;
+	left: 15%;
 }
