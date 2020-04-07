@@ -2,6 +2,7 @@ body{
     overflow-x: hidden;
     overflow-y: hidden;
     font-family: Arial, Calibri, "Times New Roman", serif;
+    background-color: #F2F2F2;
 }
 
 header{
@@ -90,6 +91,8 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus{
     left: -12pt;
     width: 78.5%;
     margin: 1em;
+    border-bottom: solid 3px;
+
 }
 
 form{
