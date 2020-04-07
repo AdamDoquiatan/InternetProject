@@ -1,15 +1,15 @@
 body {
 	font-family: arial, calibri, serif;
 	font-size: 15pt;
-    overflow-x: hidden;
-    width: 100%;
+	overflow-x: hidden;
+	width: 100%;
 }
 
-textarea{
+textarea {
 	resize: none;
 }
 
-header{
+header {
 	position: absolute;
 	top: 0;
 	left: -2pt;
@@ -21,8 +21,8 @@ header{
 	box-shadow: 0 7px 6px -6px black;
 }
 
-header span{
-	background-color: #F2F2F2;
+header span {
+	background-color: #f2f2f2;
 	transform: skew(-25deg);
 	z-index: -1;
 	position: absolute;
@@ -52,7 +52,10 @@ header span{
 	left: 15%;
 }
 
-.btn_searchQuery, .logout-btn, .btn_post, .btn_searchTopic{
+.btn_searchQuery,
+.logout-btn,
+.btn_post,
+.btn_searchTopic {
 	transition: 0.5s;
 	font-size: 1em;
 	padding: 0.8em;
@@ -65,7 +68,8 @@ header span{
 	box-shadow: 0 7px 6px -6px black;
 }
 
-.btn_searchQuery, .logout-btn{
+.btn_searchQuery,
+.logout-btn {
 	position: absolute;
 	top: 5pt;
 }
@@ -74,33 +78,38 @@ header span{
 	left: 262pt;
 }
 
-.logout-btn{
+.logout-btn {
 	right: 100pt;
 	top: 42.5pt;
 	border-radius: 10pt;
 }
 
-.btn_searchQuery img, .logout-btn img{
+.btn_searchQuery img,
+.logout-btn img {
 	transition: 0.5s;
 	width: 25pt;
 	position: relative;
 	bottom: 8pt;
 }
 
-.btn_searchTopic{
+.btn_searchTopic {
 	border-radius: 10pt;
 }
 
-.btn_searchTopic img{
+.btn_searchTopic img {
 	transition: 0.5s;
 	width: 25pt;
 }
 
 /* When the search button gets hovered, both background and img background change */
-.btn_searchQuery:hover, .btn_searchQuery:hover .btn_searchQuery img,
-	.logout-btn:hover, .logout_btn:hover .logout_btn img,
-	.btn_post:hover, .btn_post:hover .btn_post img,
-	.btn_searchTopic:hover, .btn_searchTopic:hover .btn_searchTopic img{
+.btn_searchQuery:hover,
+.btn_searchQuery:hover .btn_searchQuery img,
+.logout-btn:hover,
+.logout_btn:hover .logout_btn img,
+.btn_post:hover,
+.btn_post:hover .btn_post img,
+.btn_searchTopic:hover,
+.btn_searchTopic:hover .btn_searchTopic img {
 	transition: 0.5s;
 	background: none;
 	background-color: white;
@@ -120,12 +129,14 @@ header span{
 	box-shadow: 0 7px 6px -6px black;
 }
 
-.inp_searchBar:hover, .inp_searchBar:active, .inp_searchBar:focus{
+.inp_searchBar:hover,
+.inp_searchBar:active,
+.inp_searchBar:focus {
 	background-color: white;
 	transition: 0.5s;
 }
 
-.inp_searchBar::placeholder{
+.inp_searchBar::placeholder {
 	color: black;
 }
 
@@ -136,7 +147,7 @@ header span{
 	margin-left: 1.5em;
 }
 
-.feedContainer{
+.feedContainer {
 	border: solid 1pt grey;
 	border-radius: 10pt;
 	width: 75%;
@@ -147,21 +158,23 @@ header span{
 	margin-bottom: 15pt;
 }
 
-.feedContainer input, .feedContainer textarea{
+.feedContainer input,
+.feedContainer textarea {
 	width: 90%;
 	text-align: center;
 }
 
-.feedContainer textarea{
+.feedContainer textarea {
 	overflow-y: scroll;
 	height: 100pt;
 }
 
-.feedContainer label, .feedContainer h2{
+.feedContainer label,
+.feedContainer h2 {
 	font-family: Arial, Calibri, serif;
 }
 
-.createPostModule > div{
+.createPostModule > div {
 	text-align: left;
 	padding-left: 20pt;
 }
@@ -179,18 +192,18 @@ a {
 	float: left;
 	border-style: none;
 	margin: 0 10em 0 5em;
-    width: auto;
-    word-wrap: break-word;
+	width: auto;
+	word-wrap: break-word;
 }
 
 #right-container {
-	z-index: -4;
+	/* z-index: -4; */
 	border-left: solid black 1pt;
 	margin-top: -50pt;
 	padding: 50pt 0 0 50pt;
 	height: 50%;
 	width: 50%;
-	background-color:none;
+	background-color: none;
 
 	position: absolute;
 	top: 126pt;
@@ -226,7 +239,7 @@ a {
 	border-radius: 10pt;
 }
 
-.btn_post img{
+.btn_post img {
 	width: 35pt;
 	position: relative;
 	bottom: 3pt;
@@ -247,28 +260,27 @@ label {
 	max-width: 5rem;
 }
 
-#leftArrow{
+#leftArrow {
 	position: relative;
 	right: 15%;
 }
 
-#rightArrow{
+#rightArrow {
 	position: relative;
 	left: 15%;
 }
 
-
-#bottom-container{
-    margin: 5em;
-    position: block;
-    margin-top: 20em;
+#bottom-container {
+	margin: 5em;
+	position: block;
+	margin-top: 20em;
 }
 
-#info-container{
-    display: flex; 
-    flex-direction: row;
+#info-container {
+	display: flex;
+	flex-direction: row;
 }
 
-#button-div{
-    margin: 4em; 
+#button-div {
+	margin: 4em;
 }

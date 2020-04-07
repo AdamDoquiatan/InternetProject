@@ -8,7 +8,7 @@ CREATE TABLE users (
   bio VARCHAR (99) NOT NULL,
   img_url VARCHAR (2083) NOT NULL,
   country VARCHAR(99) NOT NULL,
-  date_of_birth DATETIME NOT NULL,
+  date_of_birth TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   post_count INT DEFAULT 0 NOT NULL,
   message_count INT DEFAULT 0 NOT NULL,
   like_count INT DEFAULT 0 NOT NULL
@@ -20,7 +20,7 @@ CREATE TABLE posts (
   user_img_url VARCHAR(2083) NOT NULL,
   subject VARCHAR(99) NOT NULL,
   content TEXT NOT NULL,
-  created_at DATETIME DEFAULT NOW() NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   topic VARCHAR(40) NOT NULL,
   reply_count INT DEFAULT 0 NOT NULL
 );
@@ -31,17 +31,16 @@ CREATE TABLE replies (
   user_id INT NOT NULL,
   user_img_url VARCHAR(2083) NOT NULL,
   content TEXT NOT NULL,
-  created_at DATETIME DEFAULT NOW() NOT NULL
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
--- You added the subject column --
 CREATE TABLE convos (
   convo_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user1_id INT NOT NULL,
   user2_id INT NOT NULL,
   user2_img_url VARCHAR(2083) NOT NULL,
   subject VARCHAR(99) NOT NULL,
-  updated_at DATETIME DEFAULT NOW() NOT NULL
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE messages (
@@ -52,7 +51,7 @@ CREATE TABLE messages (
   sender_full_name VARCHAR(99) NOT NULL,
   sender_user_img_url VARCHAR(2083) NOT NULL,
   content TEXT NOT NULL,
-  created_at DATETIME DEFAULT NOW() NOT NULL
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
 INSERT INTO messages (convo_id, sender_user_id, reciever_user_id, sender_user_img_url, content) 
@@ -69,6 +68,10 @@ SELECT user_id FROM users WHERE email = 'adamdoq@gmail.com' && password = 'passw
 
 -- Gets a user's profile (everything except the user_id, email, and password) --
 SELECT full_name, bio, img_url, country, date_of_birth, post_count, message_count, like_count FROM users WHERE user_id = 36;
+
+-- Increment a user's likes --
+UPDATE users SET like_count = like_count + 1 WHERE user_id = 56;
+
 
 
 -- POST QUERIES --

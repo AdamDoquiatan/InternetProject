@@ -18,6 +18,7 @@
 </form>
 </div>
 
+<h1>User Id: {{user_data.user_id}}</h1>
 
 {{!-- Left Side Display Info --}}
 
@@ -32,16 +33,12 @@
 </div>
 <div id="name">{{user_data.full_name}}</div>
 <div id="bio">{{user_data.bio}}</div><br><br><br>
-<a href="/editProfilePage">&nbsp;Edit Profile</a><br>
 </div>
 
-{{!-- Right Container for message and like button --}}
 <div id="right-container">
     <div id="button-div">
-        <form action="/like/{{id}}" method="POST">
-        <button type="button" class="btn">Message</button>
-        <button  class="btn" type="submit">Like</button>
-        </form>
+    <a href="/incrementLikes?userId={{user_data.user_id}}">Like</a><br>
+    <a href="/sendMessagePage?userId={{user_data.user_id}}">Message</a><br>
     <a href="/profilePage?userId={{user_data.user_id}}">&nbsp;Posts {{user_data.post_count}}</a><br>
     <a>&nbsp;Likes {{user_data.like_count}}</a><br><br><br>
      </div>
