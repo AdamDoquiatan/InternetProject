@@ -9,13 +9,13 @@ const pool = mysql.createPool({
 	port: 3306
 })
 
-// Heroku hosted
+// Heroku hosted -- creds via Heroku environment variables
 // const pool = mysql.createPool({
-//   host: '',
-//   user: '',
-//   database: '',
-//   password: '',
-//   port:
+//  host: process.env.host,
+// 	database: process.env.database,
+// 	user: process.env.user,
+// 	password: process.env.password,
+// 	port: process.env.port
 // })
 
 module.exports = pool.promise()
