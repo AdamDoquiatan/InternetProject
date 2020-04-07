@@ -8,7 +8,7 @@ CREATE TABLE users (
   bio VARCHAR (99) NOT NULL,
   img_url VARCHAR (2083) NOT NULL,
   country VARCHAR(99) NOT NULL,
-  date_of_birth TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  date_of_birth DATETIME NOT NULL,
   post_count INT DEFAULT 0 NOT NULL,
   message_count INT DEFAULT 0 NOT NULL,
   like_count INT DEFAULT 0 NOT NULL
@@ -39,7 +39,7 @@ CREATE TABLE convos (
   user1_id INT NOT NULL,
   user2_id INT NOT NULL,
   user2_img_url VARCHAR(2083) NOT NULL,
-  subject VARCHAR(99) NOT NULL,
+  subject VARCHAR(255) NOT NULL,
   updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -50,6 +50,7 @@ CREATE TABLE messages (
   reciever_user_id INT NOT NULL,
   sender_full_name VARCHAR(99) NOT NULL,
   sender_user_img_url VARCHAR(2083) NOT NULL,
+  subject VARCHAR(255),
   content TEXT NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
@@ -141,15 +142,15 @@ SELECT * FROM replies WHERE post_id = 18;
 -- CONVO AND MESSAGE QUERIES --
 
 -- Creates a convo + create a new message + increments message count for that convo --
-INSERT INTO convos (user1_id, user2_id, user2_img_url, subject) VALUES (36, 56, 'testURL', 'testSubject');
-INSERT INTO messages (convo_id, sender_user_id, reciever_user_id, sender_full_name, sender_user_img_url, content) VALUES (3, 36, 56, 'Fake McFakey', 'testURL', 'testcontent');
+INSERT INTO convos (user1_id, user2_id, user2_img_url, subject) VALUES (2, 1, 'testURL', 'testSubject');
+INSERT INTO messages (convo_id, sender_user_id, reciever_user_id, sender_full_name, sender_user_img_url, subject, content) VALUES (1, 2, 1, 'Fake McFakey', 'testURL', 'testsubject', 'testcontent');
 
 UPDATE users
 SET message_count = message_count + 1
-WHERE user_id = 56;
+WHERE user_id = 1;
 
 -- Creates a new message --
-INSERT INTO messages (convo_id, sender_user_id, reciever_user_id, sender_full_name, sender_user_img_url, content) VALUES (3, 36, 56, 'Fakey McFake', 'testURL', 'testcontent');
+INSERT INTO messages (convo_id, sender_user_id, reciever_user_id, sender_full_name, sender_user_img_url, subject, content) VALUES (1, 1, 2, 'Fakey McFake', 'testURL', 'testsubject', 'testcontent');
 
 UPDATE users
 SET message_count = message_count + 1

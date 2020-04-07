@@ -24,18 +24,17 @@
 <h1>Convo Page</h1>
 <div id="flexbox">
   <div id="left-container">
-    <h1>CONVO DATA</h1>
-
     {{#each convo_data}}
     {{>convo this}}
     {{/each}}
   </div>
 
   <div id="right-container">
-    <h2>Convo Messages (latest convo's messages rendered by default)</h2>
-    {{#each message_data}}
-    {{>message this}}
-    {{/each}}
+    <h2>Messages</h2>
+    {{#if message_data}}
+      {{#each message_data}}
+      {{>message this}}
+      {{/each}}
     <form class="createMessageModule" action='/createMessage' method="POST">
       <input type="hidden" name="convo_id" value="{{message_params.convo_id}}" />
       <input type="hidden" name="sender_user_id" value="{{message_params.sender_user_id}}" />
@@ -46,7 +45,9 @@
       <input class="inp_content" name="content" type="text" maxlength="500" placeholder="Write a message..."><br>
       <input class="btn_reply" name="message" type="submit" value="Send" />
     </form>
-
+    {{else}}
+      <h3>You haven't started any conversations yet!</h3> 
+    {{/if}}
 
   </div>
 </div>

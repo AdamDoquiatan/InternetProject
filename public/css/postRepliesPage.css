@@ -1,16 +1,15 @@
-
 body {
 	font-family: arial, calibri, serif;
 	font-size: 15pt;
-    overflow-x: hidden;
-    background: #f2f2f2;
+	overflow-x: hidden;
+	background: #f2f2f2;
 }
 
-textarea{
+textarea {
 	resize: none;
 }
 
-header{
+header {
 	position: absolute;
 	top: 0;
 	left: -2pt;
@@ -22,8 +21,8 @@ header{
 	box-shadow: 0 7px 6px -6px black;
 }
 
-header span{
-	background-color: #F2F2F2;
+header span {
+	background-color: #f2f2f2;
 	transform: skew(-25deg);
 	z-index: -1;
 	position: absolute;
@@ -44,7 +43,7 @@ a {
 }
 
 .userImg {
-	max-width: 5rem;
+	max-width: 7rem;
 }
 
 #top-container {
@@ -66,7 +65,10 @@ a {
 	left: 15%;
 }
 
-.btn_searchQuery, .logout-btn, .btn_post, .btn_searchTopic{
+.btn_searchQuery,
+.logout-btn,
+.btn_post,
+.btn_searchTopic {
 	transition: 0.5s;
 	font-size: 1em;
 	padding: 0.8em;
@@ -79,7 +81,8 @@ a {
 	box-shadow: 0 7px 6px -6px black;
 }
 
-.btn_searchQuery, .logout-btn{
+.btn_searchQuery,
+.logout-btn {
 	position: absolute;
 	top: 5pt;
 }
@@ -88,33 +91,38 @@ a {
 	left: 262pt;
 }
 
-.logout-btn{
+.logout-btn {
 	right: 100pt;
 	top: 42.5pt;
 	border-radius: 10pt;
 }
 
-.btn_searchQuery img, .logout-btn img{
+.btn_searchQuery img,
+.logout-btn img {
 	transition: 0.5s;
 	width: 25pt;
 	position: relative;
 	bottom: 8pt;
 }
 
-.btn_searchTopic{
+.btn_searchTopic {
 	border-radius: 10pt;
 }
 
-.btn_searchTopic img{
+.btn_searchTopic img {
 	transition: 0.5s;
 	width: 25pt;
 }
 
 /* When the search button gets hovered, both background and img background change */
-.btn_searchQuery:hover, .btn_searchQuery:hover .btn_searchQuery img,
-.logout-btn:hover, .logout_btn:hover .logout_btn img,
-.btn_post:hover, .btn_post:hover .btn_post img,
-.btn_searchTopic:hover, .btn_searchTopic:hover .btn_searchTopic img{
+.btn_searchQuery:hover,
+.btn_searchQuery:hover .btn_searchQuery img,
+.logout-btn:hover,
+.logout_btn:hover .logout_btn img,
+.btn_post:hover,
+.btn_post:hover .btn_post img,
+.btn_searchTopic:hover,
+.btn_searchTopic:hover .btn_searchTopic img {
 	transition: 0.5s;
 	background: none;
 	background-image: linear-gradient(to bottom right, white, grey);
@@ -126,19 +134,21 @@ a {
 	height: 3em;
 	position: absolute;
 	top: 5pt;
-	background: #F2F2F2;
+	background: #f2f2f2;
 	border-radius: 10pt;
 	border: solid 1pt black;
 	padding-left: 10pt;
 	box-shadow: 0 7px 6px -6px black;
 }
 
-.inp_searchBar:hover, .inp_searchBar:active, .inp_searchBar:focus{
+.inp_searchBar:hover,
+.inp_searchBar:active,
+.inp_searchBar:focus {
 	background-color: white;
 	transition: 0.5s;
 }
 
-.inp_searchBar::placeholder{
+.inp_searchBar::placeholder {
 	color: black;
 }
 
@@ -149,25 +159,24 @@ a {
 	margin-left: 1.5em;
 }
 
-#postOpen-container{
-		border: solid 1pt grey;
-		border-radius: 10pt;
-		padding: 15pt;
-		box-shadow: 6px 7px 6px -6px black;
-		background-color: white;
-		margin-bottom: 15pt;
-		margin-left: auto;
-		margin-right: auto;
-		width: 70%;
-		text-align: left;
+#postOpen-container {
+	border: solid 1pt grey;
+	border-radius: 10pt;
+	padding: 15pt;
+	box-shadow: 6px 7px 6px -6px black;
+	background-color: white;
+	margin-bottom: 15pt;
+	margin-left: auto;
+	margin-right: auto;
+	width: 70%;
+	text-align: left;
 }
 
-#postOpen-container input[type=image]{
+#postOpen-container input[type=image] {
 	width: 500pt;
 }
 
-#reply-container{
-
+#reply-container {
 	border: solid 1pt grey;
 	border-radius: 10pt;
 	padding: 15pt;
@@ -178,10 +187,9 @@ a {
 	margin-right: auto;
 	width: 50%;
 	text-align: left;
-
 }
 
-.createReplyModule{
+.createReplyModule {
 	border: solid 1pt grey;
 	border-radius: 10pt;
 	padding: 15pt;
@@ -194,19 +202,18 @@ a {
 	text-align: center;
 }
 
-.createReplyModule input{
+.createReplyModule input {
 	font-size: 15pt;
 }
-.inp_content{
+.inp_content {
 	font-size: 15pt;
 	width: 70%;
 	height: 80pt;
 	margin-bottom: 1em;
 }
 
-.btn_reply{
+.btn_reply {
 	background-color: orangered;
 	padding: 5pt;
 	color: whitesmoke;
-
 }
