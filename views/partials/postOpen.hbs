@@ -1,9 +1,84 @@
-<h2>This is a post</h2>
-<form action='/profilePage' method="GET">
-  <input type="hidden" name="userId" value="{{this.user_id}}"/>
-  <input type="image" src="{{this.user_img_url}}" class="userImg" alt="(userImage)" >
-</form>
-<h2>{{this.subject}}</h2>
-<h2>{{this.topic}}</h2>
-<p>{{this.content}}</p>
-<p>{{this.created_at}}</p>
+<style>
+  .userImg {
+    border-radius: 50%;
+  }
+
+  #flexbox {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #img-container {
+    margin: 2em;
+  }
+
+  #post-data {
+    margin-bottom: 1em;
+  }
+
+  #post-topic {
+    width: auto;
+    font-size: 15pt;
+    color: orangered;
+    margin-left: 8em;
+    margin-top: 4pt;
+    vertical-align: middle;
+  }
+
+  #post-topic p {
+    border: 2px solid red;
+    padding: 5px;
+  }
+
+  #post-subject {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #post-subject h2{
+    width: auto;
+  }
+
+  #post-inside {
+    margin-top: -7%;
+    margin-left: 2em;
+  }
+
+  #date{
+    font-size: 8pt;
+  }
+
+  #subject-name{
+    font-size: 18pt;
+    font-weight: bold;
+  }
+</style>
+
+<div id="flexbox">
+
+  {{!-- Image container stays on left --}}
+  <div id="img-container">
+    <form action='/profilePage' method="GET">
+      <input type="hidden" name="userId" value="{{this.user_id}}" />
+      <input type="image" src="{{this.user_img_url}}" class="userImg" alt="(userImage)"><br>
+    </form>
+  </div>
+
+  {{!-- Right container displays post data --}}
+  <div id="post-data">
+
+    <div id="post-subject">
+
+      <p id="subject-name">{{this.subject}}</p>
+
+      <div id="post-topic">
+        <p>{{this.topic}}</p>
+      </div>
+    </div>
+
+    <div id="post-inside">
+    <p>{{this.content}}</p>
+    <p id="date">{{this.created_at}}</p>
+    </div>
+  </div>
+</div>

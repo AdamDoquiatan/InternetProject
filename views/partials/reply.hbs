@@ -1,6 +1,33 @@
-<h2>This is a Reply</h2>
-<form action='/profilePage' method="GET">
-  <input type="hidden" name="userId" value="{{this.user_id}}" />
-  <input type="image" src="{{this.user_img_url}}" class="userImg" alt="(userImage)">
-</form>
-<p>{{this.content}}</p>
+<style>
+  #flexbox {
+    display: flex;
+    flex-direction: row;
+    margin: 0em;
+  }
+
+  #img-container-reply {
+    margin-left: 2em;
+    margin-bottom: 2em;
+  }
+
+  #reply-content {
+    margin-left: 2em;
+    margin-top: -13pt;
+
+  }
+</style>
+<div id="flexbox">
+  <div id="img-container-reply">
+    <form action='/profilePage' method="GET">
+      <input type="hidden" name="userId" value="{{this.user_id}}" />
+      <input type="image" src="{{this.user_img_url}}" class="userImg" alt="(userImage)">
+    </form>
+
+  </div>
+
+  <div id="reply-content">
+    <p>{{this.content}}</p>
+  </div>
+
+
+</div>

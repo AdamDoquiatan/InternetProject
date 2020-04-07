@@ -1,12 +1,41 @@
-<h1>Post Replies Page</h1>
-{{#each post_data}}
+<header><span></span></header>
+<!--background for topbanner-->
+<div id="top-container">
+  <div id="logo"><a href="#default">
+      <h1><span id="highlight">c</span>k</h1>
+    </a></div>
+  <div id="search-bar">
+    <form class="searchByQuery" action='/querySearchPage' method="GET">
+      <input class="inp_searchBar" name="searchQuery" type="text" maxlength="40" placeholder="Search">
+      <button class="btn_searchQuery" type="submit" value="Search">
+        <img src="./images/searchIcon.png" alt="Search" />
+      </button>
+    </form>
+  </div>
+  <form name="logout" method="post" action="">
+    <label class="logoutLblPos">
+      <button class="logout-btn" name="logoutbtn" type="submit" value="Logout">
+        <img src="images/logoutIcon.png" alt="Log Out" />
+      </button>
+    </label>
+  </form>
+</div>
+
+
+<div id="postOpen-container">
+  {{#each post_data}}
   {{>postOpen this}}
-{{/each}}
-{{#each reply_data}}
+  {{/each}}
+</div>
+
+<div id="reply-container">
+  {{#each reply_data}}
   {{>reply this}}
-{{/each}}
+  {{/each}}
+</div>
+
 <form class="createReplyModule" action='/createReply' method="POST">
   <input type="hidden" name="postId" value="{{post_id}}" />
-  <input class="inp_content" name="content" type="text" maxlength="500" placeholder="add your reply..."><br>
+  <input class="inp_content" name="content" type="text" maxlength="500"  placeholder="add your reply..."><br>
   <input class="btn_reply" name="comment" type="submit" value="Comment" />
 </form>
