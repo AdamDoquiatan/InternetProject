@@ -267,3 +267,11 @@ label {
 	position: relative;
 	left: 15%;
 }
+
+h1 {
+	text-align: center;
+}
+
+#post-container{
+	margin-left: 10em;
+}

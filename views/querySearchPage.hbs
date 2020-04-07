@@ -18,50 +18,9 @@
 </form>
 </div>
 
-<h1>Query Search Page</h1>
+<h1>Query Search Results:</h1>
+<div id="post-container">
 {{#each post_data}}
 {{>post this}}
 {{/each}}
-
-
-
-
-
-<h2>PostsData Placeholders Made </h2>
-
- <div class="container">
-        {{!-- {{#each people}} --}}
-        <div class="row">
-            <div class="user-img">
-                <img class="artistImg" style="width:50px;" src={{this.img_url}} />
-                img here 
-            </div>
-            <div class="results-container">
-                <div class="row">
-                    <div class="topic-title">
-                        <h6>{{this.title}}</h6>
-                        topic title here 
-                    </div>
-                    <div class="topic">
-                        topic display inside button-> 
-                        <button type="button" class="btn-info">{{this.topic}}</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="desc">
-                        detailed post here 
-                        <p>{{this.topic_desc}}</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="date">
-                        date here
-                        <p>{{this.date}}</p>
-                    </div>
-      
-                </div>
-            </div>
-        </div>
-        replies show here
-        {{!-- {{/each}} --}}
-    </div>
+</div>
