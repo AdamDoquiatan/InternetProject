@@ -266,14 +266,27 @@ label {
 	max-width: 10rem;
 }
 
-#leftArrow {
-	position: relative;
-	right: 15%;
+.arrow {
+	transition: 0.5s;
+	border: solid black 1pt;
+	border-radius: 10pt;
+	background-color: grey;
+	background-image: linear-gradient(to bottom right, white, grey);
+	padding: 5pt;
 }
 
-#rightArrow {
-	position: relative;
-	left: 15%;
+.arrow:hover{
+	transition: 0.5s;
+	background: none;
+	background-color: orangered;
+}
+
+#leftArrow{
+	float: left;
+}
+
+#rightArrow{
+	float: right;
 }
 
 textarea {

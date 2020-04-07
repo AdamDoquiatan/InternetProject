@@ -18,8 +18,12 @@
 </form>
 </div>
 
-<h1>Query Search Results:</h1>
-<div id="post-container">
+<div id="post-header">
+    <h1>Query Search Results:</h1>
+</div>
+
+<div id="post-container" class="feedContainer">
+    <br /><br /><br /><br /><br />
 {{#each post_data}}
 {{>post this}}
 {{/each}}

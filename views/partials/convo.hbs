@@ -1,6 +1,30 @@
+
+  .userImgConvo {
+    max-width: 4rem;
+    border-radius: 50%;
+  }
+
+  .convoSubject {
+    font-size: 15pt;
+    margin-left: 2em;
+  }
+
+  .convoDate {
+    font-size: 7pt;
+    margin-left: 2em;
+  }
+</style>
+
 <form class="convo" type="submit" action='/convoPage' method="GET" onclick="this.submit();">
-<h2>This is a Convo (clickable)</h2>
   <input type="hidden" name="convoId" value="{{this.convo_id}}" />
-  <img src="{{this.user2_img_url}}" class="userImg" alt="(userImage)">
+  <div id="flexbox">
+    <div id="left-container">
+      <img src="{{this.user2_img_url}}" class="userImgConvo" alt="(userImage)">
+    </div>
+    <div>
+      <p class="convoDate">{{this.updated_at}}</p>
+      <p class="convoSubject">{{this.subject}}</p>
+    </div>
+  </div>
 </form>
 <h2>{{this.topic}}</h2>
