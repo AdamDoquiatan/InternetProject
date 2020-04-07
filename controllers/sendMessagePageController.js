@@ -15,7 +15,7 @@ exports.renderSendMessagePage = async(req, res) => {
             sender_user_id: req.session.userId,
             reciever_user_id: req.query.userId,
             sender_full_name: req.session.fullName,
-            user_img_url: req.session.userImgUrl
+            user_img_url: req.session.userImgUrl,
             reciever_img_url: recieverImgUrl[0].img_url
         }
         res.render('sendMessagePage', { sendMessagePageJSCSS: true, message_params: createMessageInfo })
