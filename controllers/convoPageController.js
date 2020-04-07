@@ -55,6 +55,7 @@ exports.renderConvoPage = async(req, res) => {
 exports.createMessage = async(req, res) => {
     try {
         await messageModel.createMessage(req.body)
+        await messageModel.sendMessageEmail(req.body)
         res.redirect('back')
     } catch (err) {
         res.send('' + err)

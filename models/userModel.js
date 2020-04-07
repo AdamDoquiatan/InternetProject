@@ -69,9 +69,14 @@ exports.getUserProfile = async(userData) => {
     }
 }
 
-/**
- * Expects JSON data with new user info and updates the SQL database.
- */
+exports.getUserEmail = async(userId) => {
+        var sql = 'SELECT email FROM users WHERE user_id = ' + userId + ';'
+        let response = await pool.execute(sql)
+        return response[0][0]['email']
+    }
+    /**
+     * Expects JSON data with new user info and updates the SQL database.
+     */
 exports.updateUserProfile = async(userData) => {
     try {
         //Test to verify received data.
