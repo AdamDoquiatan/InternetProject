@@ -156,7 +156,7 @@ a {
 #left-container{
     margin-left: 2em;
     width: 30%;
-    border-right: grey solid 2pt;
+    /* border-right: grey solid 2pt; */
 }
 
 #right-container{
