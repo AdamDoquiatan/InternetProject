@@ -51,8 +51,10 @@ exports.getFiveDiscussions = async (userPostData) => {
 				userPostData.posts_shown +
 				';'
 		)
+		//console.log('RESP ' + JSON.stringify(response))
 		if (response[0].length !== 0) {
 			const responseData = response[0]
+			//console.log('resp data: ' + JSON.stringify(responseData))
 			return responseData
 		} else {
 			return {}
