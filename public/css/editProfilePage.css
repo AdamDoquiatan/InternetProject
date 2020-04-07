@@ -96,10 +96,6 @@ a {
 	border-radius: 10pt;
 }
 
-.btn_updateProfile{
-	float: right;
-}
-
 .btn_searchQuery img, .logout-btn img, .btn_cancelProfile img{
 	transition: 0.5s;
 	width: 25pt;

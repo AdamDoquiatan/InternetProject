@@ -23,6 +23,11 @@
 
 
 <div id="feed-container">
+    <a href="../dashboard">
+        <button class="btn_cancelProfile">
+            <img src="images/cancelIcon.png" alt="Discard Changes" />
+        </button>
+    </a>
     <h2>Edit Your Profile Page, {{ fullName }}</h2>
 
     <form action='/updateProfile' method='POST'>
@@ -53,11 +58,7 @@
         <div class="row"> Date <input class="inp_dateOfBirth" name="dateOfBirth" type="text" maxlength="40"
                 placeholder="date of birth (YYYY-MM-DD)" value="{{dateOfBirth}}"><br /></div>
 
-        <a href="../#dashboard">
-            <button class="btn_cancelProfile">
-                <img src="images/cancelIcon.png" alt="Discard Changes" />
-            </button>
-        </a>
+        <!--placement of old cancel button-->
 
         <button class="btn_updateProfile" type="submit" value='Save'>
             <img src="images/saveIcon.png" alt="Save Profile" />
