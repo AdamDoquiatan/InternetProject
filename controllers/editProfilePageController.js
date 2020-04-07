@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const userModel = require('../models/userModel.js')
 const bodyParser = require('body-parser')
+const dateFormat = require("node.date-time")
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -11,7 +12,9 @@ exports.renderEditProfilePage = async(req, res) => {
         // These functions pull data needed to render the page from the database. Then you can do whatever you want with it.
         // Right now we're just rendering the raw data to the screen
         const userData = await userModel.getUserProfile({ user_id: req.session.userId })
-        res.render('editProfilePage', { editProfilePageJSCSS: true, user_data: JSON.stringify(userData), fullName: userData.full_name, imgURL: userData.img_url, bio: userData.bio, country: userData.country, dateOfBirth: userData.date_of_birth })
+        var rawDOB = userData.dob
+        var date = rawDOB.format("Y-MM-dd")
+        res.render('editProfilePage', { editProfilePageJSCSS: true, user_data: JSON.stringify(userData), fullName: userData.full_name, imgURL: userData.img_url, bio: userData.bio, country: userData.country, dateOfBirth: date })
     } catch (err) {
         res.send('' + err)
     }

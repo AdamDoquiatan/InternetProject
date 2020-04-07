@@ -39,6 +39,8 @@ exports.renderConvoPage = async(req, res) => {
         } else {
             messageParams = false
         }
+
+
         res.render('convoPage', {
             convoPageJSCSS: true,
             convo_data: convoData,
