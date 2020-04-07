@@ -26,7 +26,7 @@ exports.sendMessage = async(req, res) => {
         console.log(JSON.stringify(req.body))
         await messageModel.createMessage(req.body)
         await messageModel.sendMessageEmail(req.body)
-        res.redirect('back')
+        res.redirect('/profilePage?userId=' + req.body.reciever_user_id)
     } catch (err) {
         res.send('' + err)
     }
