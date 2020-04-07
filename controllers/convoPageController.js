@@ -18,7 +18,6 @@ exports.renderConvoPage = async(req, res) => {
         }
 
         let otherUser
-
         if (messageData.length > 0) {
             for (let message of messageData) {
                 if (req.session.userId !== message.sender_user_id) {
@@ -38,7 +37,6 @@ exports.renderConvoPage = async(req, res) => {
                 user_img_url: req.session.userImgUrl
             }
         } else {
-            messageData = false
             messageParams = false
         }
         res.render('convoPage', {
