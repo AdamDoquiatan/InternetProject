@@ -22,8 +22,9 @@
 </div>
 
 
-<h2>Edit Your Profile Page, {{ fullName }}</h2>
 <div id="feed-container">
+    <h2>Edit Your Profile Page, {{ fullName }}</h2>
+
     <form action='/updateProfile' method='POST'>
 
         <div class="row">
@@ -52,6 +53,14 @@
         <div class="row"> Date <input class="inp_dateOfBirth" name="dateOfBirth" type="text" maxlength="40"
                 placeholder="date of birth (YYYY-MM-DD)" value="{{dateOfBirth}}"><br /></div>
 
-        <input class="btn_updateProfile" type="submit" value='Save' />
+        <a href="../#dashboard">
+            <button class="btn_cancelProfile">
+                <img src="images/cancelIcon.png" alt="Discard Changes" />
+            </button>
+        </a>
+
+        <button class="btn_updateProfile" type="submit" value='Save'>
+            <img src="images/saveIcon.png" alt="Save Profile" />
+        </button>
     </form>
 </div>
