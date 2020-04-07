@@ -9,6 +9,7 @@ body {
 
 textarea{
 	resize: none;
+	overflow-y: scroll;
 }
 
 header{
@@ -67,7 +68,7 @@ a {
 	left: 15%;
 }
 
-.btn_searchQuery, .logout-btn, .btn_post, .btn_searchTopic{
+.btn_searchQuery, .logout-btn, .btn_post, .btn_searchTopic, .btn_updateProfile, .btn_cancelProfile {
 	transition: 0.5s;
 	font-size: 1em;
 	padding: 0.8em;
@@ -95,30 +96,37 @@ a {
 	border-radius: 10pt;
 }
 
-.btn_searchQuery img, .logout-btn img{
+.btn_searchQuery img, .logout-btn img, .btn_cancelProfile img{
 	transition: 0.5s;
 	width: 25pt;
 	position: relative;
 	bottom: 8pt;
 }
 
-.btn_searchTopic{
+.btn_searchTopic, .btn_updateProfile, .btn_cancelProfile {
 	border-radius: 10pt;
 }
 
-.btn_searchTopic img{
+.btn_searchTopic img, .btn_updateProfile img {
 	transition: 0.5s;
 	width: 25pt;
+}
+
+.btn_updateProfile img{
+	position: relative;
+	bottom: 7pt;
 }
 
 /* When the search button gets hovered, both background and img background change */
 .btn_searchQuery:hover, .btn_searchQuery:hover .btn_searchQuery img,
 .logout-btn:hover, .logout_btn:hover .logout_btn img,
 .btn_post:hover, .btn_post:hover .btn_post img,
-.btn_searchTopic:hover, .btn_searchTopic:hover .btn_searchTopic img{
+.btn_searchTopic:hover, .btn_searchTopic:hover .btn_searchTopic img,
+.btn_updateProfile:hover, .btn_updateProfile:hover .btn_updateProfile img,
+.btn_cancelProfile:hover, .btn_cancelProfile:hover .btn_cancelProfile img {
 	transition: 0.5s;
 	background: none;
-	background-color: white;
+	background-image: linear-gradient(to bottom right, white, grey);
 	cursor: pointer;
 }
 
