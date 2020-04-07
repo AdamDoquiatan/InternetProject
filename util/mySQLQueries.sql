@@ -73,6 +73,8 @@ SELECT full_name, bio, img_url, country, date_of_birth, post_count, message_coun
 -- Increment a user's likes --
 UPDATE users SET like_count = like_count + 1 WHERE user_id = 56;
 
+-- Get user img url --
+SELECT img_url from users WHERE user_id = 2;
 
 
 -- POST QUERIES --
