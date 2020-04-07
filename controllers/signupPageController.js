@@ -13,11 +13,12 @@ exports.renderSignupPage = (req, res) => {
 }
 
 exports.completeRegistration = async (req, res) => {
+	console.log('Checking env logs1: ' + process.env)
 	const userData = gatherUserDetails(req)
 	if (!checkAllFieldsFilled(userData)) {
 		return
 	}
-	console.log('Checking env logs: ' + process.env)
+	console.log('Checking env logs2: ' + process.env)
 	try {
 		const userId = await createUser(req, userData)
 		req.session.userId = userId
@@ -25,7 +26,9 @@ exports.completeRegistration = async (req, res) => {
 		console.log('going to dashboard with userId: ' + userId)
 		res.redirect('/dashboard')
 	} catch (err) {
+		console.log('Checking env logs3: ' + process.env)
 		console.log('DB Error: Please Ensure your date of birth is in format YYYY-MM-DD')
+
 		return
 	}
 }
