@@ -336,3 +336,14 @@ label {
 #like-button:hover {
 	background-color: darkorange;
 }
+
+#post-header{
+	width: 76.9%;
+	border: solid black 1pt;
+	background-color: red;
+	color: white;
+	border-radius: 10pt;
+	box-shadow: 0 7px 6px -6px black;
+	margin-bottom: 5pt;
+	padding-left: 15pt;
+}

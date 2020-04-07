@@ -43,7 +43,10 @@
 {{!-- All Posts Container --}}
 
 <div id="bottom-container">
-    <h2>All Posts By {{user_data.full_name}} </h2>
+    <div id="post-header">
+        <h2>All Posts By {{user_data.full_name}} </h2>
+    </div>
+
     {{!-- <p>{{ post_data }}</p> --}}
     <div class="feedContainer">
         {{#each post_data}}
