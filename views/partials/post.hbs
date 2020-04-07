@@ -13,7 +13,6 @@
   }
 
   #post-data {
-    width: ;
     margin-bottom: 1em;
   }
 
@@ -47,6 +46,11 @@
   #date{
     font-size: 8pt;
   }
+
+  #subject-name{
+    font-size: 18pt;
+    font-weight: bold;
+  }
 </style>
 
 <div id="flexbox">
@@ -63,7 +67,8 @@
   <div id="post-data">
 
     <div id="post-subject">
-      <h2>{{this.subject}}</h2>
+
+      <p id="subject-name">{{this.subject}}</p>
 
       <div id="post-topic">
         <p>{{this.topic}}</p>
