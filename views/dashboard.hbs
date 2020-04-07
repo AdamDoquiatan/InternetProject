@@ -1,91 +1,93 @@
-<header><span></span></header><!--background for topbanner-->
+<header><span></span></header>
+<!--background for topbanner-->
 <div id="top-container">
-  <div id="logo"><a href='/dashboard'> <h1><span id="highlight">c</span>k</h1></a></div>
+  <div id="logo"><a href='/dashboard'>
+      <h1><span id="highlight">c</span>k</h1>
+    </a></div>
   <div id="search-bar">
-  <form class="searchByQuery" action='/querySearchPage' method="GET">
-  <input class="inp_searchBar" name="searchQuery" type="text" maxlength="40" placeholder="Search">
+    <form class="searchByQuery" action='/querySearchPage' method="GET">
+      <input class="inp_searchBar" name="searchQuery" type="text" maxlength="40" placeholder="Search">
       <button class="btn_searchQuery" type="submit" value="Search">
-          <img src="./images/searchIcon.png" alt="Search" />
+        <img src="./images/searchIcon.png" alt="Search" />
       </button>
-  </form>
+    </form>
   </div>
   <form name="logout" method="get" action="/">
-  <label class="logoutLblPos">
+    <label class="logoutLblPos">
       <button class="logout-btn" name="logoutbtn" type="submit" value="Logout">
-          <img src="images/logoutIcon.png" alt="Log Out" />
+        <img src="images/logoutIcon.png" alt="Log Out" />
       </button>
-  </label>
-</form>
+    </label>
+  </form>
 </div>
 
 {{!-- Left Side Display Info --}}
 
 <div id="left-container">
-<h2>Retrieve from database</h2>
-  <h2>UserData</h2>
-<div id="profile-pic">
-  <form action='/profilePage' method="GET">
-    <input type="hidden" name="userId" value="{{user_data.user_id}}" />
-    <input type="image" src="{{user_data.img_url}}" class="userImg" alt="(userImage)">
-  </form>
-</div>
-<div id="name">{{user_data.full_name}}</div>
-<div id="bio">{{user_data.bio}}</div><br><br><br>
-<a href="/profilePage?userId={{user_data.user_id}}">&nbsp;Posts {{user_data.post_count}}</a><br>
-<a href="/convoPage">&nbsp;Messages {{user_data.message_count}}</a></br>
-<a>&nbsp;Likes {{user_data.like_count}}</a><br><br><br>
-<a href="/editProfilePage">&nbsp;Edit Profile</a><br>
+  <div id="profile-pic">
+    <form action='/profilePage' method="GET">
+      <input type="hidden" name="userId" value="{{user_data.user_id}}" />
+      <input type="image" src="{{user_data.img_url}}" class="userImgTop" alt="(userImage)">
+    </form>
+  </div>
+  <div id="name">{{user_data.full_name}}</div>
+  <div id="bio">{{user_data.bio}}</div><br><br><br>
+  <div id="left-buttons">
+  <a class="clickable" href="/profilePage?userId={{user_data.user_id}}">&nbsp;Posts <span id="post-count">{{user_data.post_count}}</span> </a><br><br>
+  <a class="clickable" href="/convoPage">&nbsp;Messages <span id="msg-count"> {{user_data.message_count}}</span> </a></br><br>
+  <a>&nbsp;Likes <span id="like-count"> {{user_data.like_count}} </span></a><br><br><br><br>
+  <a id="test" href="/editProfilePage">&nbsp;Edit Profile</a><br>
+  </div>
 </div>
 
 {{!-- Right Side Entry + Posts --}}
 
 <div id="right-container">
-<form class='feedContainer createPostModule' action='/createPost' method="POST">
-   <div>
-       <label for="inp_topic">Health Category:</label>
-       <select class="inp_topic" name="topic">
-           <option value="corona">Corona General</option>
-           <option value="cough">Cough</option>
-           <option value="fever">Fever</option>
-           <option value="respiratory">Respiratory</option>
-           <option value="not_corona">Not Corona</option>
-       </select>
-  <h2>What's your question today?</h2>
-   </div>
+  <form class='feedContainer createPostModule' action='/createPost' method="POST">
+    <div>
+      <h2>What's your question today?</h2>
+      <label for="inp_topic">Health Category:</label>
+      <select class="inp_topic" name="topic">
+        <option value="corona">Corona General</option>
+        <option value="cough">Cough</option>
+        <option value="fever">Fever</option>
+        <option value="respiratory">Respiratory</option>
+        <option value="not_corona">Not Corona</option>
+      </select>
+    </div>
 
-  <input class="inp_subject" name="subject" type="text" maxlength="40" placeholder="subject"><br>
-  {{!-- <input class="inp_content" name="content" type="text" maxlength="500" placeholder="details"><br> --}}
-  <textarea class="inp_content" name="content" type="text" maxlength="500" placeholder="enter details...." rows="4" cols="50" name="comment"></textarea><br />
+    <input class="inp_subject" name="subject" type="text" maxlength="40" placeholder="subject"><br>
+    {{!-- <input class="inp_content" name="content" type="text" maxlength="500" placeholder="details"><br> --}}
+    <textarea class="inp_content" name="content" type="text" maxlength="500" placeholder="enter details...." rows="4"
+      cols="50" name="comment"></textarea><br />
     <button class="btn_post" name="post" type="submit" value="Post to Timeline">
-        <img src="images/pencilIcon.png" alt="Submit Post" />
+      <img src="images/pencilIcon.png" alt="Submit Post" />
     </button>
-</form>
+  </form>
 
-<form class='feedContainer searchByTopic' action='/topicSearchPage' method="GET">
-  <h2>Search By Topic</h2>
-  <select class="inp_topic" name="topic">
-    <option value="corona">Corona General</option>
-    <option value="cough">Cough</option>
-    <option value="fever">Fever</option>
-    <option value="respiratory">Respiratory</option>
-    <option value="not_corona">Not Corona</option>
-  </select><br />
+  <form class='feedContainer searchByTopic' action='/topicSearchPage' method="GET">
+    <h2>Search By Topic</h2>
+    <select class="inp_topic" name="topic">
+      <option value="corona">Corona General</option>
+      <option value="cough">Cough</option>
+      <option value="fever">Fever</option>
+      <option value="respiratory">Respiratory</option>
+      <option value="not_corona">Not Corona</option>
+    </select><br />
     <button class="btn_searchTopic" type="submit" value="search">
-        <img src="./images/searchIcon.png" alt="Search" />
+      <img src="./images/searchIcon.png" alt="Search" />
     </button>
-</form>
+  </form>
 
-<div class="feedContainer">
-  <h2>Last 5 Discussions (Posts) Data</h2>
-  {{#each post_data}}
-      {{>post this}}
-  {{/each}}
+  <div class="feedContainer">
+    <h2>Last 5 Discussions</h2>
+    {{#each post_data}}
+    {{>post this}}
+    {{/each}}
 
-  <a href="/getPreviousFiveDiscussions" id="leftArrow"><</a>&nbsp;&nbsp;
-  <a href="/getNextFiveDiscussions" id="rightArrow">></a>
+    <a href="/getPreviousFiveDiscussions" id="leftArrow"><</a>&nbsp;&nbsp;
+        <a href="/getNextFiveDiscussions" id="rightArrow">></a>
+  </div>
+
+
 </div>
-
-
-</div>
-
-

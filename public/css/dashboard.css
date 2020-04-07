@@ -111,8 +111,7 @@ header span{
 	height: 3em;
 	position: absolute;
 	top: 5pt;
-
-	background: none;
+	background: #f2f2f2;
 	border-radius: 10pt;
 	border: solid 1pt black;
 	padding-left: 10pt;
@@ -177,8 +176,9 @@ a {
 #left-container {
 	float: left;
 	border-style: none;
-	margin: 0 10em 0 5em;
+	margin: 0 5em 0 5em;
 	width: 40%;
+	text-align: left;
 }
 
 #right-container {
@@ -189,7 +189,6 @@ a {
 	height: auto;
 	width: 60%;
 	background-color: #F2F2F2;
-
 	position: absolute;
 	top: 126pt;
 	left: 40%;
@@ -214,6 +213,7 @@ a {
 	color: red;
 	border-style: solid;
 	border-color: red;
+	margin-bottom: 1em;
 }
 
 .btn_post {
@@ -241,6 +241,13 @@ label {
 	color: orangered;
 }
 
+.userImgTop {
+	border-radius: 50%;
+	margin-bottom: 2em;
+	margin-left: 2em;
+	border:10px double lightgrey;
+}
+
 .userImg {
 	max-width: 5rem;
 }
@@ -253,4 +260,47 @@ label {
 #rightArrow{
 	position: relative;
 	left: 15%;
+}
+
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+ }
+
+ #name{
+	 font-size: 25pt;
+	 color: orangered;
+	 margin-bottom: 10pt;
+ }
+
+ #bio{
+	 font-size: 13pt;
+ }
+
+#post-count{
+	margin-left: 10em;
+}
+
+#msg-count{
+	margin-left: 119pt;
+}
+
+#like-count{
+	margin-left: 158pt;
+}
+
+#left-buttons{
+	margin-left: -2em;
+}
+
+#test{
+	color: green;
+	border: solid 1pt;
+	padding: 5pt;
+}
+
+.clickable{
+	/* color: green; */
+	border: solid 1pt;
+	padding: 5pt;
 }

@@ -21,7 +21,7 @@
     font-size: 15pt;
     color: orangered;
     margin-left: 8em;
-    margin-top: 0pt;
+    margin-top: 5pt;
     vertical-align: middle;
   }
 
@@ -51,6 +51,17 @@
     font-size: 18pt;
     font-weight: bold;
   }
+
+  .btn_replies{
+    background-color: orangered;
+    color: whitesmoke; 
+  }
+
+  #reply-btn{
+    width: 6em;
+    margin-bottom: 12pt;
+  }
+
 </style>
 
 <div id="flexbox">
@@ -81,7 +92,9 @@
 
     <form action='/postRepliesPage' method="GET">
       <input type="hidden" name="postId" value="{{this.post_id}}" />
-      <input class="btn_replies" type="submit" value="Replies {{this.reply_count}}" />
+      <div id="reply-btn">
+      <input class="btn_replies" type="submit" value="Replies: {{this.reply_count}}" />
+      </div>
     </form>
     </div>
   </div>
