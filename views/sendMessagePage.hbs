@@ -1,1 +1,12 @@
 <h1>Send Message Page</h1>
+<form action='/profilePage' method="GET">
+    <input type="hidden" name="userId" value="{{user_data.user_id}}" />
+    <input type="image" src="{{user_data.img_url}}" class="userImg" alt="(userImage)">
+  </form>
+<form class="sendMessageModule" action='/sendMessage' method="POST">
+  <input type="hidden" name="senderId" value={{req.session.userId}}>
+  <input type="hidden" name="receiverId" value={{user_data.user_id}}>
+  <input type="text" name="msgSubject" placeholder="Subject" />
+  <textarea name="msgBody" type="text" maxlength="500" placeholder="Enter your message here..." rows="5" cols="50" ></textarea>
+  <input name="btnMessage" type="submit"/>
+</form>
