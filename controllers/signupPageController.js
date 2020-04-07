@@ -17,7 +17,7 @@ exports.completeRegistration = async (req, res) => {
 	if (!checkAllFieldsFilled(userData)) {
 		return
 	}
-	console.log(process.env)
+	console.log('Checking env logs: ' + process.env)
 	try {
 		const userId = await createUser(req, userData)
 		req.session.userId = userId
