@@ -29,7 +29,7 @@
     </form>
   </div>
   <div id="right-container">
-    <form class="createMessageModule" action='/createMessageDirect' method="POST">
+    <form class="createMessageModule" action='/createMessageDirect?userId={{message_params.reciever_user_id}}' method="POST">
       <input type="hidden" name="convo_id" value="{{message_params.convo_id}}" />
       <input type="hidden" name="sender_user_id" value="{{message_params.sender_user_id}}" />
       <input type="hidden" name="reciever_user_id" value="{{message_params.reciever_user_id}}" />
