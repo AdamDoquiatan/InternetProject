@@ -125,7 +125,7 @@ a {
 	position: absolute;
 	top: 5pt;
 
-	background: none;
+	background: #F2F2F2;
 	border-radius: 10pt;
 	border: solid 1pt black;
 	padding-left: 10pt;
@@ -275,3 +275,5 @@ h1 {
 #post-container{
 	margin-left: 10em;
 }
+
+
