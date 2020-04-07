@@ -1,1 +1,164 @@
+.userImg {
+    max-width: 5rem;
+}
 
+body {
+    font-family: arial, calibri, serif;
+    font-size: 15pt;
+    overflow-x: hidden;
+}
+
+textarea {
+    resize: none;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: -2pt;
+    width: 100%;
+    height: 80pt;
+    background-color: red;
+    z-index: -2;
+    border: solid black 2pt;
+    box-shadow: 0 7px 6px -6px black;
+}
+
+header span {
+    background-color: #F2F2F2;
+    transform: skew(-25deg);
+    z-index: -1;
+    position: absolute;
+    top: -2pt;
+    left: 70pt;
+    width: 100pt;
+    height: 80pt;
+    border: solid black 2pt;
+}
+
+#highlight {
+    color: orangered;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.userImg {
+    max-width: 5rem;
+}
+
+#top-container {
+    background: none;
+    height: 10em;
+    width: 100%;
+    text-align: center;
+    margin-bottom: -2em;
+    position: relative;
+    left: 62pt;
+    bottom: 22pt;
+}
+
+#search-bar {
+    float: left;
+    margin: 2.5em;
+    position: absolute;
+    left: 15%;
+}
+
+.btn_searchQuery,
+.logout-btn,
+.btn_post,
+.btn_searchTopic {
+    transition: 0.5s;
+    font-size: 1em;
+    padding: 0.8em;
+    background-color: orangered;
+    background-image: linear-gradient(to bottom right, orange, red);
+    width: 50pt;
+    height: 33.5pt;
+    border: solid black 1pt;
+    border-radius: 0 10pt 10pt 0;
+    box-shadow: 0 7px 6px -6px black;
+}
+
+.btn_searchQuery,
+.logout-btn {
+    position: absolute;
+    top: 5pt;
+}
+
+.btn_searchQuery {
+    left: 262pt;
+}
+
+.logout-btn {
+    right: 100pt;
+    top: 42.5pt;
+    border-radius: 10pt;
+}
+
+.btn_searchQuery img,
+.logout-btn img {
+    transition: 0.5s;
+    width: 25pt;
+    position: relative;
+    bottom: 8pt;
+}
+
+.btn_searchTopic {
+    border-radius: 10pt;
+}
+
+.btn_searchTopic img {
+    transition: 0.5s;
+    width: 25pt;
+}
+
+
+/* When the search button gets hovered, both background and img background change */
+
+.btn_searchQuery:hover,
+.btn_searchQuery:hover .btn_searchQuery img,
+.logout-btn:hover,
+.logout_btn:hover .logout_btn img,
+.btn_post:hover,
+.btn_post:hover .btn_post img,
+.btn_searchTopic:hover,
+.btn_searchTopic:hover .btn_searchTopic img {
+    transition: 0.5s;
+    background: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.inp_searchBar {
+    width: 30em;
+    height: 3em;
+    position: absolute;
+    top: 5pt;
+    background: none;
+    border-radius: 10pt;
+    border: solid 1pt black;
+    padding-left: 10pt;
+    box-shadow: 0 7px 6px -6px black;
+}
+
+.inp_searchBar:hover,
+.inp_searchBar:active,
+.inp_searchBar:focus {
+    background-color: white;
+    transition: 0.5s;
+}
+
+.inp_searchBar::placeholder {
+    color: black;
+}
+
+#logo {
+    font-size: 20pt;
+    float: left;
+    margin-top: 10pt;
+    margin-left: 1.5em;
+}
