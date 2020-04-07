@@ -38,7 +38,9 @@ exports.sendMessage = async(req, res) => {
             sender_user_id: req.body.sender_user_id,
             reciever_user_id: req.body.reciever_user_id,
             sender_full_name: req.body.sender_full_name,
-            user_img_url: req.body.user_img_url
+            user_img_url: req.body.user_img_url,
+            subject: req.body.subject,
+            content: req.body.content
         }
         await messageModel.createMessage(messageData)
         await messageModel.sendMessageEmail(messageData)
