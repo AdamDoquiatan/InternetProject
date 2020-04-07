@@ -118,7 +118,7 @@ a {
 .btn_searchTopic:hover, .btn_searchTopic:hover .btn_searchTopic img{
 	transition: 0.5s;
 	background: none;
-	background-color: white;
+	background-image: linear-gradient(to bottom right, white, grey);
 	cursor: pointer;
 }
 
