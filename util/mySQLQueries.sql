@@ -8,7 +8,7 @@ CREATE TABLE users (
   bio VARCHAR (99) NOT NULL,
   img_url VARCHAR (2083) NOT NULL,
   country VARCHAR(99) NOT NULL,
-  date_of_birth TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  date_of_birth DATETIME NOT NULL,
   post_count INT DEFAULT 0 NOT NULL,
   message_count INT DEFAULT 0 NOT NULL,
   like_count INT DEFAULT 0 NOT NULL
