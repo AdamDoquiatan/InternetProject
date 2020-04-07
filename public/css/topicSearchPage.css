@@ -277,6 +277,22 @@ h1 {
 }
 
 #post-container{
-	margin-left: 10em;
+	margin-left: 10%;
+	width: 80%;
+	text-align: center;
+}
+
+#post-header{
+	margin-left: 10%;
+	width: 82.2%;
+	border: solid black 1pt;
+	background-color: red;
+	color: white;
+	border-radius: 10pt 10pt 0 0;
+	box-shadow: 0 7px 6px -6px black;
+
+	position: absolute;
+	left: 4.5pt;
+	top: 126pt;
 }
 
