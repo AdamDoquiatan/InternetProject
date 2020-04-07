@@ -1,5 +1,28 @@
-<h2>This is a Message</h2>
-<img src="{{this.sender_user_img_url}}" class="userImg" alt="(userImage)">
+<style>
+   .userImgMsg{
+         max-width: 3rem;
+    border-radius: 50%;
+    margin: 1em;
+   }
+
+   .createdAt{
+       font-size: 10pt;
+   }
+
+   #right-side{
+       margin-left: 3em;
+   }
+</style>
+
+<div id="flexbox">
+    <div id="left-img">
+     <img src="{{this.sender_user_img_url}}" class="userImgMsg" alt="(userImage)">
+    </div>
+    <div id="right-side">
 <h3 class="userName">{{this.sender_full_name}}</h3>
 <p class="createdAt">{{this.created_at}}</p>
 <p class="content">{{this.content}}</p>
+
+    </div>
+ 
+</div>

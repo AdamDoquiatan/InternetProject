@@ -154,13 +154,24 @@ a {
 }
 
 #left-container{
-    margin: 2em;
+    margin-left: 2em;
     width: 30%;
     border-right: grey solid 2pt;
 }
 
 #right-container{
-    border: solid 2pt;
+	/* border: solid 2pt;
+	padding: 12pt; */
+	border: solid 1pt grey;
+	border-radius: 10pt;
+	padding: 15pt;
+	box-shadow: 6px 7px 6px -6px black;
+	background-color: white;
+	margin-bottom: 15pt;
+	margin-left: 3pt;
+	margin-right: auto;
+	width: 50%;
+	text-align: left;
 }
 
 .inp_content{
@@ -173,5 +184,27 @@ a {
 .btn_reply{
     font-size: 13pt; 
     background-color: orangered;
-    color: whitesmoke;
+	color: whitesmoke;
+	
+}
+.subject-entry{
+	font-size: 13pt;
+	margin-bottom: 1em;
+	margin-top: 2em;
+}
+
+#reply-convo{
+	margin-left: 5em;
+	border-top: grey solid 1pt;
+	padding: 5pt;
+	width: 24em;
+}
+
+.inp_content{
+	height: 10em;
+	width: 22em;
+}
+
+#convoTitle{
+	text-align: center;
 }
