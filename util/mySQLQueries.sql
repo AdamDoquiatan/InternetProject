@@ -55,6 +55,9 @@ CREATE TABLE messages (
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+
+
+
 INSERT INTO messages (convo_id, sender_user_id, reciever_user_id, sender_user_img_url, content) 
   VALUES (1, 36, 44, 'testURL', 'testcontent');
 
@@ -164,3 +167,9 @@ SELECT * FROM convos WHERE user1_id = 36 OR user2_id = 36 ORDER BY updated_at DE
 -- Gets all messages in a convo --
 SELECT * FROM messages WHERE convo_id = 1;
 
+
+drop table convos;
+drop table messages;
+drop table posts;
+drop table replies;
+drop table users;
