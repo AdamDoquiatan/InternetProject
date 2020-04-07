@@ -121,8 +121,7 @@ header span {
 	height: 3em;
 	position: absolute;
 	top: 5pt;
-
-	background: none;
+	background: #F2f2f2;
 	border-radius: 10pt;
 	border: solid 1pt black;
 	padding-left: 10pt;
@@ -197,8 +196,6 @@ a {
 }
 
 #right-container {
-	/* z-index: -4; */
-	border-left: solid black 1pt;
 	margin-top: -50pt;
 	padding: 50pt 0 0 50pt;
 	height: 50%;
@@ -284,3 +281,53 @@ label {
 #button-div {
 	margin: 4em;
 }
+
+.userImgProfilePage{
+	border-radius: 50%;
+	margin-bottom: 2em;
+	margin-left: 2em;
+	width: 18em;
+	border:10px double lightgrey;
+}
+
+#name{
+	font-size: 35pt;
+	color: orangered;
+	margin-bottom: 10pt;
+	margin-left: 20pt;
+}
+
+#bio{
+    font-size: 13pt;
+	margin-left: 20pt;
+}
+
+#bottom-container{
+	margin-top: 23em;
+}
+
+#like-button{
+	border: solid 3pt;
+	background-color: orangered;
+	color: whitesmoke;
+	padding: 5pt 12pt 5pt 12pt;
+}
+
+#message-button{
+
+	border: solid 3pt;
+	background-color: orangered;
+	color: whitesmoke;
+	padding: 5pt 12pt 5pt 12pt;
+
+}
+
+#right-container{
+	margin-top: 5em;
+}
+
+.clickable{
+	color: orangered;
+	font-weight: bold;
+}
+

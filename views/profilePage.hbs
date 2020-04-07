@@ -21,24 +21,22 @@
 {{!-- Left Side Display Info --}}
 
 <div id="left-container">
-<h2>Retrieve from database</h2>
-  <h2>UserData</h2>
 <div id="profile-pic">
   <form action='/profilePage' method="GET">
     <input type="hidden" name="userId" value="{{user_data.user_id}}" />
-    <input type="image" src="{{user_data.img_url}}" class="userImg" alt="(userImage)">
+    <input type="image" src="{{user_data.img_url}}" class="userImgProfilePage" alt="(userImage)">
   </form>
-</div>
+</div> 
 <div id="name">{{user_data.full_name}}</div>
 <div id="bio">{{user_data.bio}}</div><br><br><br>
 </div>
 
 <div id="right-container">
     <div id="button-div">
-    <a href="/incrementLikes?userId={{user_data.user_id}}">Like</a><br>
-    <a href="/sendMessagePage?userId={{user_data.user_id}}">Message</a><br>
-    <a href="/profilePage?userId={{user_data.user_id}}">&nbsp;Posts {{user_data.post_count}}</a><br>
-    <a>&nbsp;Likes {{user_data.like_count}}</a><br><br><br>
+    <a id="like-button" href="/incrementLikes?userId={{user_data.user_id}}">Like</a><br><br><br>
+    <a id="message-button" href="/sendMessagePage?userId={{user_data.user_id}}">Message</a><br><br><br>
+    <a class="clickable" href="/profilePage?userId={{user_data.user_id}}">&nbsp;Posts: &nbsp;&nbsp; {{user_data.post_count}}</a><br>
+    <a class="clickable">&nbsp;Likes: &nbsp; &nbsp;&nbsp;{{user_data.like_count}}</a><br><br><br>
      </div>
 </div>
 
