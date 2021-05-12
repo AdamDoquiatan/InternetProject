@@ -16,7 +16,7 @@
 		"express-session": "^1.17.0",
 		"mysql2": "^2.1.0",
 		"node.date-time": "^1.2.2",
-		"nodemailer": "^6.4.6",
+		"nodemailer": "^6.4.16",
 		"package": "^1.0.1",
 		"package-lock": "^1.0.2"
 	}
